@@ -44,6 +44,8 @@
 	"threed.objects.tool": "3D objects",
 	"mountains": "Mountains",
 	"mountains.tool": "Mountains",
+	"blueprint.editor": "Blueprint editor",
+	"ai.assistant": "AI assistant",
 	"set.br.path.folder": "Set BR path folder",
 	"debug.options": "Debug options",
 	"general.options": "General options",

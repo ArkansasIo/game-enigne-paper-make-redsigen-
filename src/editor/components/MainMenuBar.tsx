@@ -30,7 +30,7 @@ import { FaArrowDown, FaArrowsAlt, FaArrowUp, FaBackward, FaPlug, FaRegKeyboard 
 import { FiMap } from 'react-icons/fi';
 import { IoIosRedo, IoIosUndo, IoMdArrowBack } from 'react-icons/io';
 import { LuFolders, LuLanguages, LuMountain, LuRocket, LuSaveAll } from 'react-icons/lu';
-import { MdAutoAwesomeMosaic, MdClose, MdOutlineAddchart, MdOutlineWallpaper } from 'react-icons/md';
+import { MdAutoAwesomeMosaic, MdClose, MdOutlineAddchart, MdOutlineSmartToy, MdOutlineWallpaper } from 'react-icons/md';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { TbNumbers } from 'react-icons/tb';
 import { TfiVideoClapper } from 'react-icons/tfi';
@@ -117,7 +117,9 @@ import '../styles/MainMenuBar.css';
 import Button from './Button';
 import Dialog from './dialogs/Dialog';
 import DialogAbout from './dialogs/DialogAbout';
+import DialogAIAssistant from './dialogs/DialogAIAssistant';
 import DialogChangeLanguage from './dialogs/DialogChangeLanguage';
+import DialogBlueprint from './dialogs/DialogBlueprint';
 import DialogCollisions from './dialogs/DialogCollisions';
 import DialogData from './dialogs/DialogData';
 import DialogDebugOptions from './dialogs/DialogDebugOptions';
@@ -172,6 +174,8 @@ enum DIALOG_TYPE {
 	GENERAL_OPTIONS,
 	CHANGE_LANGUAGE,
 	ABOUT,
+	BLUEPRINT,
+	AI_ASSISTANT,
 }
 
 function MainMenuBar() {
@@ -746,6 +750,14 @@ function MainMenuBar() {
 		setDialogType(DIALOG_TYPE.ABOUT);
 	};
 
+	const handleBlueprint = async () => {
+		setDialogType(DIALOG_TYPE.BLUEPRINT);
+	};
+
+	const handleAIAssistant = async () => {
+		setDialogType(DIALOG_TYPE.AI_ASSISTANT);
+	};
+
 	const handleMinimize = async () => {
 		await IO.minimize();
 	};
@@ -1057,6 +1069,12 @@ function MainMenuBar() {
 					onClick: handleMountains,
 					disabled: !isProjectOpened,
 				},
+				{
+					title: `${t('blueprint.editor')}...`,
+					icon: <MdOutlineAddchart />,
+					onClick: handleBlueprint,
+					disabled: !isProjectOpened,
+				},
 			],
 		},
 		{
@@ -1083,6 +1101,11 @@ function MainMenuBar() {
 				{
 					title: `${t('change.language')}...`,
 					onClick: handleChangeLanguage,
+				},
+				{
+					title: `${t('ai.assistant')}...`,
+					icon: <MdOutlineSmartToy />,
+					onClick: handleAIAssistant,
 				},
 			],
 		},
@@ -1297,6 +1320,10 @@ function MainMenuBar() {
 				return <DialogChangeLanguage setIsOpen={handleSetIsDialogOpen} />;
 			case DIALOG_TYPE.ABOUT:
 				return <DialogAbout setIsOpen={handleSetIsDialogOpen} />;
+			case DIALOG_TYPE.BLUEPRINT:
+				return <DialogBlueprint setIsOpen={handleSetIsDialogOpen} />;
+			case DIALOG_TYPE.AI_ASSISTANT:
+				return <DialogAIAssistant setIsOpen={handleSetIsDialogOpen} />;
 			default:
 				return null;
 		}

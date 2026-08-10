@@ -22,6 +22,7 @@ type Props = {
 	fillHeight?: boolean;
 	smallDefaultHeight?: boolean;
 	placeholder?: string;
+	height?: number;
 };
 
 function TextArea({
@@ -33,6 +34,7 @@ function TextArea({
 	fillHeight = false,
 	smallDefaultHeight = false,
 	placeholder,
+	height,
 }: Props) {
 	const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -84,6 +86,7 @@ function TextArea({
 			spellCheck='false'
 			disabled={disabled}
 			placeholder={placeholder}
+			style={height !== undefined ? { height: `${height}px`, resize: 'none' } : undefined}
 		/>
 	);
 }

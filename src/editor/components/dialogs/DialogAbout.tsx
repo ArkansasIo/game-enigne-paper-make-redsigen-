@@ -34,6 +34,8 @@ function DialogAbout({ setIsOpen }: Props) {
 	const [patreons, setPatreons] = useState<PatreonJSONType>();
 
 	const changelogsLink = 'https://github.com/RPG-Paper-Maker/RPG-Paper-Maker/tree/master/changelogs';
+	const redesignGithubProfile = 'https://github.com/ArkansasIo';
+	const redesignForkRepo = 'https://github.com/ArkansasIo/game-enigne-paper-make-redsigen-';
 
 	const initialize = async () => {
 		setPatreons(JSON.parse(await readPublicFile(Paths.FILE_PATREON)));
@@ -59,7 +61,7 @@ function DialogAbout({ setIsOpen }: Props) {
 		>
 			<Flex column spacedLarge fillWidth fillHeight>
 				<div>
-					RPG Paper Maker {Project.VERSION}, changelogs:{' '}
+					Andromeda RPG Paper Maker {Project.VERSION}, changelogs:{' '}
 					<a
 						href=''
 						onClick={async (e) => {
@@ -70,10 +72,46 @@ function DialogAbout({ setIsOpen }: Props) {
 						{changelogsLink}
 					</a>
 				</div>
-				http://rpg-paper-maker.com/
-				<div>{t('thanks.patreon')}:</div>
-				{patreons?.current}
-				<div>RPG Paper Maker Copyright © {new Date().getFullYear()} Wano</div>
+			http://rpg-paper-maker.com/
+			<div>{t('thanks.patreon')}:</div>
+			{patreons?.current}
+			<div
+				style={{
+					width: '100%',
+					height: '1px',
+					background: 'currentColor',
+					opacity: 0.25,
+					margin: '4px 0',
+				}}
+			/>
+			<Flex column spaced>
+				<div style={{ fontWeight: 'bold', fontSize: '1.05em' }}>Redesign by Stephen</div>
+				<div>
+					GitHub:{' '}
+					<a
+						href=''
+						onClick={async (e) => {
+							e.preventDefault();
+							await openWebsite(redesignGithubProfile);
+						}}
+					>
+						{redesignGithubProfile}
+					</a>
+				</div>
+				<div>
+					Fork repository:{' '}
+					<a
+						href=''
+						onClick={async (e) => {
+							e.preventDefault();
+							await openWebsite(redesignForkRepo);
+						}}
+					>
+						{redesignForkRepo}
+					</a>
+				</div>
+			</Flex>
+			<div>Andromeda RPG Paper Maker Copyright © {new Date().getFullYear()} Stephen</div>
 				<div>{t('copyright')}</div>
 			</Flex>
 		</Dialog>

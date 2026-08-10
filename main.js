@@ -721,6 +721,31 @@ const exists = async (path) => {
 	}
 };
 
+const getAISettingsPath = () => {
+	try {
+		return path.join(app.getPath('userData'), 'andromeda-ai.json');
+	} catch {
+		return path.join(os.homedir(), '.andromeda-ai.json');
+	}
+};
+
+ipcMain.handle('get-ai-settings', async () => {
+	const filePath = getAISettingsPath();
+	try {
+		const content = await fs.readFile(filePath, 'utf8');
+		return JSON.parse(content);
+	} catch {
+		return {};
+	}
+});
+
+ipcMain.handle('save-ai-settings', async (event, settings) => {
+	const filePath = getAISettingsPath();
+	await createFolder(path.dirname(filePath));
+	await fs.writeFile(filePath, JSON.stringify(settings ?? {}, null, 2), 'utf8');
+	return true;
+});
+
 ipcMain.handle('check-file-exists', async (event, path) => await exists(path));
 
 ipcMain.handle('get-folders-files', async (event, path) => {
