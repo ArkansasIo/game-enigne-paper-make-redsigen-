@@ -1,0 +1,415 @@
+{
+	"author": "ArkansasIo",
+	"category": 0,
+	"commands": [
+		{
+			"name": "Roll dice",
+			"id": 1,
+			"description": "Roll any dice notation (e.g. 2d6+3, d20). Stores the total in the current map object properties.",
+			"defaultParameters": [
+				{
+					"name": "diceNotation",
+					"id": -1,
+					"description": "Dice notation to roll, e.g. 1d20, 2d6+3",
+					"defaultValue": { "k": 8, "v": "1d20" }
+				},
+				{
+					"name": "advantage",
+					"id": -1,
+					"description": "Roll with advantage (roll twice, keep highest). Only applies to d20 rolls.",
+					"defaultValue": { "k": 10, "v": false }
+				},
+				{
+					"name": "disadvantage",
+					"id": -1,
+					"description": "Roll with disadvantage (roll twice, keep lowest). Only applies to d20 rolls.",
+					"defaultValue": { "k": 10, "v": false }
+				}
+			]
+		},
+		{
+			"name": "Roll initiative",
+			"id": 2,
+			"description": "Roll initiative for a creature and add it to the combat order. Uses creature id -1 for the current map object.",
+			"defaultParameters": [
+				{
+					"name": "creatureId",
+					"id": -1,
+					"description": "ID of the creature (DnD5E registry id). -1 uses the current map object's bound creature.",
+					"defaultValue": { "k": 12, "v": -1 }
+				}
+			]
+		},
+		{
+			"name": "Start combat",
+			"id": 3,
+			"description": "Begin combat: sort the initiative order and highlight the current combatant.",
+			"defaultParameters": []
+		},
+		{
+			"name": "End combat",
+			"id": 4,
+			"description": "End the current combat and clear the combat state.",
+			"defaultParameters": []
+		},
+		{
+			"name": "Next turn",
+			"id": 5,
+			"description": "Advance to the next combatant in the initiative order.",
+			"defaultParameters": []
+		},
+		{
+			"name": "Deal damage",
+			"id": 6,
+			"description": "Deal damage to a creature. Damage can be a flat amount or a dice expression.",
+			"defaultParameters": [
+				{
+					"name": "creatureId",
+					"id": -1,
+					"description": "ID of the creature to damage. -1 uses the current map object.",
+					"defaultValue": { "k": 12, "v": -1 }
+				},
+				{
+					"name": "amount",
+					"id": -1,
+					"description": "Amount of damage, or dice expression like 2d6+3",
+					"defaultValue": { "k": 8, "v": "1d8" }
+				},
+				{
+					"name": "damageType",
+					"id": -1,
+					"description": "Type of damage: slashing, piercing, bludgeoning, fire, cold, etc.",
+					"defaultValue": { "k": 8, "v": "slashing" }
+				}
+			]
+		},
+		{
+			"name": "Heal",
+			"id": 7,
+			"description": "Heal a creature by a flat amount or dice expression.",
+			"defaultParameters": [
+				{
+					"name": "creatureId",
+					"id": -1,
+					"description": "ID of the creature to heal. -1 uses the current map object.",
+					"defaultValue": { "k": 12, "v": -1 }
+				},
+				{
+					"name": "amount",
+					"id": -1,
+					"description": "Amount of healing, or dice expression like 2d8+2",
+					"defaultValue": { "k": 8, "v": "2d8" }
+				}
+			]
+		},
+		{
+			"name": "Make attack",
+			"id": 8,
+			"description": "Roll an attack with a weapon or attack action. Handles advantage, crits and damage.",
+			"defaultParameters": [
+				{
+					"name": "attackerId",
+					"id": -1,
+					"description": "ID of the attacking creature. -1 uses the current map object.",
+					"defaultValue": { "k": 12, "v": -1 }
+				},
+				{
+					"name": "targetId",
+					"id": -1,
+					"description": "ID of the target creature. -1 uses the current map object.",
+					"defaultValue": { "k": 12, "v": -1 }
+				},
+				{
+					"name": "weaponName",
+					"id": -1,
+					"description": "Name of the weapon to attack with (from SRD weapons).",
+					"defaultValue": { "k": 8, "v": "Shortsword" }
+				},
+				{
+					"name": "advantage",
+					"id": -1,
+					"description": "Attack with advantage",
+					"defaultValue": { "k": 10, "v": false }
+				},
+				{
+					"name": "disadvantage",
+					"id": -1,
+					"description": "Attack with disadvantage",
+					"defaultValue": { "k": 10, "v": false }
+				}
+			]
+		},
+		{
+			"name": "Cast spell",
+			"id": 9,
+			"description": "Cast a known/prepared spell by name, using the creature's spell slots.",
+			"defaultParameters": [
+				{
+					"name": "casterId",
+					"id": -1,
+					"description": "ID of the spellcaster. -1 uses the current map object.",
+					"defaultValue": { "k": 12, "v": -1 }
+				},
+				{
+					"name": "targetId",
+					"id": -1,
+					"description": "ID of the target creature. -1 uses the current map object.",
+					"defaultValue": { "k": 12, "v": -1 }
+				},
+				{
+					"name": "spellName",
+					"id": -1,
+					"description": "Name of the spell to cast (from SRD spells).",
+					"defaultValue": { "k": 8, "v": "Fire Bolt" }
+				},
+				{
+					"name": "level",
+					"id": -1,
+					"description": "Level of the spell slot to use (0 for cantrips). Leave empty for the spell's base level.",
+					"defaultValue": { "k": 12, "v": 0 }
+				}
+			]
+		},
+		{
+			"name": "Apply condition",
+			"id": 10,
+			"description": "Apply a condition to a creature: Blinded, Charmed, Deafened, Frightened, Grappled, Incapacitated, Invisible, Paralyzed, Petrified, Poisoned, Prone, Restrained, Stunned, Unconscious, Exhaustion.",
+			"defaultParameters": [
+				{
+					"name": "creatureId",
+					"id": -1,
+					"description": "ID of the creature. -1 uses the current map object.",
+					"defaultValue": { "k": 12, "v": -1 }
+				},
+				{
+					"name": "condition",
+					"id": -1,
+					"description": "Name of the condition to apply.",
+					"defaultValue": { "k": 8, "v": "Prone" }
+				}
+			]
+		},
+		{
+			"name": "Remove condition",
+			"id": 11,
+			"description": "Remove a condition from a creature.",
+			"defaultParameters": [
+				{
+					"name": "creatureId",
+					"id": -1,
+					"description": "ID of the creature. -1 uses the current map object.",
+					"defaultValue": { "k": 12, "v": -1 }
+				},
+				{
+					"name": "condition",
+					"id": -1,
+					"description": "Name of the condition to remove.",
+					"defaultValue": { "k": 8, "v": "Prone" }
+				}
+			]
+		},
+		{
+			"name": "Short rest",
+			"id": 12,
+			"description": "Take a short rest: spend hit dice to heal, refresh features that recharge on short rest.",
+			"defaultParameters": [
+				{
+					"name": "creatureId",
+					"id": -1,
+					"description": "ID of the creature resting. -1 uses the current map object.",
+					"defaultValue": { "k": 12, "v": -1 }
+				},
+				{
+					"name": "spendHitDice",
+					"id": -1,
+					"description": "Number of hit dice to spend to heal during the rest.",
+					"defaultValue": { "k": 12, "v": 0 }
+				}
+			]
+		},
+		{
+			"name": "Long rest",
+			"id": 13,
+			"description": "Take a long rest: restore all HP, hit dice and spell slots.",
+			"defaultParameters": [
+				{
+					"name": "creatureId",
+					"id": -1,
+					"description": "ID of the creature resting. -1 uses the current map object.",
+					"defaultValue": { "k": 12, "v": -1 }
+				}
+			]
+		},
+		{
+			"name": "Ability check",
+			"id": 14,
+			"description": "Roll an ability check for a creature.",
+			"defaultParameters": [
+				{
+					"name": "creatureId",
+					"id": -1,
+					"description": "ID of the creature. -1 uses the current map object.",
+					"defaultValue": { "k": 12, "v": -1 }
+				},
+				{
+					"name": "ability",
+					"id": -1,
+					"description": "Ability to check: Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma",
+					"defaultValue": { "k": 8, "v": "Strength" }
+				}
+			]
+		},
+		{
+			"name": "Skill check",
+			"id": 15,
+			"description": "Roll a skill check for a creature.",
+			"defaultParameters": [
+				{
+					"name": "creatureId",
+					"id": -1,
+					"description": "ID of the creature. -1 uses the current map object.",
+					"defaultValue": { "k": 12, "v": -1 }
+				},
+				{
+					"name": "skill",
+					"id": -1,
+					"description": "Skill to check: Acrobatics, Athletics, Deception, History, Insight, Intimidation, Investigation, Medicine, Nature, Perception, Performance, Persuasion, Religion, Sleight_of_Hand, Stealth, Survival",
+					"defaultValue": { "k": 8, "v": "Perception" }
+				}
+			]
+		},
+		{
+			"name": "Saving throw",
+			"id": 16,
+			"description": "Roll a saving throw for a creature.",
+			"defaultParameters": [
+				{
+					"name": "creatureId",
+					"id": -1,
+					"description": "ID of the creature. -1 uses the current map object.",
+					"defaultValue": { "k": 12, "v": -1 }
+				},
+				{
+					"name": "ability",
+					"id": -1,
+					"description": "Ability for the saving throw.",
+					"defaultValue": { "k": 8, "v": "Constitution" }
+				}
+			]
+		},
+		{
+			"name": "Create creature",
+			"id": 17,
+			"description": "Create a new D&D creature and bind it to the current map object.",
+			"defaultParameters": [
+				{
+					"name": "name",
+					"id": -1,
+					"description": "Name of the creature.",
+					"defaultValue": { "k": 8, "v": "Hero" }
+				},
+				{
+					"name": "race",
+					"id": -1,
+					"description": "SRD race name, e.g. Human, Elf, Dwarf.",
+					"defaultValue": { "k": 8, "v": "Human" }
+				},
+				{
+					"name": "className",
+					"id": -1,
+					"description": "SRD class name, e.g. Fighter, Wizard, or empty for a monster.",
+					"defaultValue": { "k": 8, "v": "Fighter" }
+				},
+				{
+					"name": "level",
+					"id": -1,
+					"description": "Character level (or monster CR).",
+					"defaultValue": { "k": 12, "v": 1 }
+				}
+			]
+		},
+		{
+			"name": "Create from SRD",
+			"id": 18,
+			"description": "Create a creature from an SRD monster or NPC stat block and bind it to the current map object.",
+			"defaultParameters": [
+				{
+					"name": "name",
+					"id": -1,
+					"description": "SRD monster or NPC name, e.g. Goblin, Owlbear, Commoner, Guard.",
+					"defaultValue": { "k": 8, "v": "Goblin" }
+				}
+			]
+		},
+		{
+			"name": "Show character sheet",
+			"id": 19,
+			"description": "Open the D&D character sheet UI for a creature.",
+			"defaultParameters": [
+				{
+					"name": "creatureId",
+					"id": -1,
+					"description": "ID of the creature to display. -1 uses the current map object.",
+					"defaultValue": { "k": 12, "v": -1 }
+				}
+			]
+		},
+		{
+			"name": "Show combat tracker",
+			"id": 20,
+			"description": "Open the D&D combat tracker UI showing the current initiative order.",
+			"defaultParameters": []
+		},
+		{
+			"name": "Add XP",
+			"id": 21,
+			"description": "Add experience points to a creature and handle level up.",
+			"defaultParameters": [
+				{
+					"name": "creatureId",
+					"id": -1,
+					"description": "ID of the creature gaining XP. -1 uses the current map object.",
+					"defaultValue": { "k": 12, "v": -1 }
+				},
+				{
+					"name": "amount",
+					"id": -1,
+					"description": "Amount of XP to add.",
+					"defaultValue": { "k": 12, "v": 50 }
+				}
+			]
+		}
+	],
+	"defaultParameters": [
+		{
+			"name": "Enable UI",
+			"id": -1,
+			"description": "Enable the in-game D&D character sheet and combat tracker UI.",
+			"defaultValue": { "k": 10, "v": true }
+		},
+		{
+			"name": "UI scale",
+			"id": -1,
+			"description": "Scale factor for the D&D UI (0.5 to 2).",
+			"defaultValue": { "k": 12, "v": 1 }
+		}
+	],
+	"description": "Brings the Dungeons & Dragons 5th Edition SRD (System Reference Document 5.1) into RPG Paper Maker: races, classes, backgrounds, feats, weapons, armor, equipment, spells, monsters and NPCs, plus a full rules engine (ability checks, saving throws, skill checks, combat, initiative, conditions, rests, spell slots, leveling) and in-game character sheet + combat tracker UIs.\n\nContent and mechanics are from the D&D 5e SRD and are licensed under the Open Game License 1.0a (OGL). This plugin does not include any non-SRD copyrighted text.",
+	"name": "DnD5e",
+	"parameters": [
+		{
+			"name": "Enable UI",
+			"id": -1,
+			"description": "Enable the in-game D&D character sheet and combat tracker UI.",
+			"defaultValue": { "k": 10, "v": true }
+		},
+		{
+			"name": "UI scale",
+			"id": -1,
+			"description": "Scale factor for the D&D UI (0.5 to 2).",
+			"defaultValue": { "k": 12, "v": 1 }
+		}
+	],
+	"version": "0.1.0",
+	"website": "https://github.com/ArkansasIo/game-enigne-paper-make-redsigen-"
+}

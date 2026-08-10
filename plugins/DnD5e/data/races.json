@@ -1,0 +1,208 @@
+[
+	{
+		"id": 1,
+		"name": "Dwarf",
+		"abilityBonuses": { "Constitution": 2 },
+		"size": "Medium",
+		"speed": 25,
+		"languages": ["Common", "Dwarvish"],
+		"darkvision": 60,
+		"traits": [
+			{ "name": "Darkvision", "description": "You can see in dim light within 60 feet as if it were bright light, and in darkness as if it were dim light." },
+			{ "name": "Dwarven Resilience", "description": "You have advantage on saving throws against poison, and you have resistance against poison damage." },
+			{ "name": "Dwarven Combat Training", "description": "You have proficiency with the battleaxe, handaxe, light hammer, and warhammer." },
+			{ "name": "Stonecunning", "description": "Whenever you make an Intelligence (History) check related to the origin of stonework, you are considered proficient and add double your proficiency bonus." }
+		],
+		"weaponProficiencies": ["Battleaxe", "Handaxe", "Light hammer", "Warhammer"],
+		"toolProficiencies": ["Smith's tools"],
+		"subraces": [
+			{
+				"name": "Hill Dwarf",
+				"abilityBonuses": { "Wisdom": 1 },
+				"traits": [
+					{ "name": "Dwarven Toughness", "description": "Your hit point maximum increases by 1, and it increases by 1 every time you gain a level." }
+				]
+			},
+			{
+				"name": "Mountain Dwarf",
+				"abilityBonuses": { "Strength": 2 },
+				"traits": [
+					{ "name": "Dwarven Armor Training", "description": "You have proficiency with light and medium armor." }
+				],
+				"armorProficiencies": ["light", "medium"]
+			}
+		]
+	},
+	{
+		"id": 2,
+		"name": "Elf",
+		"abilityBonuses": { "Dexterity": 2 },
+		"size": "Medium",
+		"speed": 30,
+		"languages": ["Common", "Elvish"],
+		"darkvision": 60,
+		"skillProficiencies": ["Perception"],
+		"traits": [
+			{ "name": "Darkvision", "description": "You can see in dim light within 60 feet as if it were bright light, and in darkness as if it were dim light." },
+				{ "name": "Keen Senses", "description": "You have proficiency in the Perception skill." },
+			{ "name": "Fey Ancestry", "description": "You have advantage on saving throws against being charmed, and magic can't put you to sleep." },
+			{ "name": "Trance", "description": "Elves don't need to sleep. Instead, they meditate deeply for 4 hours a day." }
+		],
+		"subraces": [
+			{
+				"name": "High Elf",
+				"abilityBonuses": { "Intelligence": 1 },
+				"traits": [
+					{ "name": "Elf Weapon Training", "description": "You have proficiency with the longsword, shortsword, shortbow, and longbow." },
+					{ "name": "Cantrip", "description": "You know one cantrip of your choice from the wizard spell list." },
+					{ "name": "Extra Language", "description": "You can speak, read, and write one extra language of your choice." }
+				],
+				"weaponProficiencies": ["Longsword", "Shortsword", "Shortbow", "Longbow"]
+			},
+			{
+				"name": "Wood Elf",
+				"abilityBonuses": { "Wisdom": 1 },
+				"speed": 35,
+				"traits": [
+					{ "name": "Elf Weapon Training", "description": "You have proficiency with the longsword, shortsword, shortbow, and longbow." },
+					{ "name": "Fleet of Foot", "description": "Your base walking speed increases to 35 feet." },
+					{ "name": "Mask of the Wild", "description": "You can attempt to hide even when you are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena." }
+				],
+				"weaponProficiencies": ["Longsword", "Shortsword", "Shortbow", "Longbow"]
+			}
+		]
+	},
+	{
+		"id": 3,
+		"name": "Halfling",
+		"abilityBonuses": { "Dexterity": 2 },
+		"size": "Small",
+		"speed": 25,
+		"languages": ["Common", "Halfling"],
+		"traits": [
+			{ "name": "Lucky", "description": "When you roll a 1 on the d20 for an attack roll, ability check, or saving throw, you can reroll the die and must use the new roll." },
+			{ "name": "Brave", "description": "You have advantage on saving throws against being frightened." },
+			{ "name": "Halfling Nimbleness", "description": "You can move through the space of any creature that is of a size larger than yours." }
+		],
+		"subraces": [
+			{
+				"name": "Lightfoot Halfling",
+				"abilityBonuses": { "Charisma": 1 },
+				"traits": [
+					{ "name": "Naturally Stealthy", "description": "You can attempt to hide even when you are obscured only by a creature that is at least one size larger than you." }
+				]
+			},
+			{
+				"name": "Stout Halfling",
+				"abilityBonuses": { "Constitution": 1 },
+				"traits": [
+					{ "name": "Stout Resilience", "description": "You have advantage on saving throws against poison, and you have resistance against poison damage." }
+				]
+			}
+		]
+	},
+	{
+		"id": 4,
+		"name": "Human",
+		"abilityBonuses": { "Strength": 1, "Dexterity": 1, "Constitution": 1, "Intelligence": 1, "Wisdom": 1, "Charisma": 1 },
+		"size": "Medium",
+		"speed": 30,
+		"languages": ["Common"],
+		"traits": [
+			{ "name": "Ability Score Increase", "description": "All of your ability scores increase by 1." },
+			{ "name": "Skills", "description": "You gain proficiency in one skill of your choice." },
+			{ "name": "Feat", "description": "You gain one feat of your choice (variant human)." }
+		]
+	},
+	{
+		"id": 5,
+		"name": "Dragonborn",
+		"abilityBonuses": { "Strength": 2, "Charisma": 1 },
+		"size": "Medium",
+		"speed": 30,
+		"languages": ["Common", "Draconic"],
+		"traits": [
+			{ "name": "Draconic Ancestry", "description": "Choose a dragon type (black, blue, brass, bronze, copper, gold, green, red, silver, white), determining your breath weapon and damage resistance." },
+			{ "name": "Breath Weapon", "description": "As an action, exhale destructive energy. The type depends on your ancestry. A line or cone forces a Dexterity saving throw (DC 8 + proficiency + Constitution modifier). Damage scales with level." },
+			{ "name": "Damage Resistance", "description": "You have resistance to the damage type associated with your Draconic Ancestry." }
+		]
+	},
+	{
+		"id": 6,
+		"name": "Gnome",
+		"abilityBonuses": { "Intelligence": 2 },
+		"size": "Small",
+		"speed": 25,
+		"languages": ["Common", "Gnomish"],
+		"darkvision": 60,
+		"traits": [
+			{ "name": "Darkvision", "description": "You can see in dim light within 60 feet as if it were bright light, and in darkness as if it were dim light." },
+			{ "name": "Gnome Cunning", "description": "You have advantage on all Intelligence, Wisdom, and Charisma saving throws against magic." }
+		],
+		"subraces": [
+			{
+				"name": "Forest Gnome",
+				"abilityBonuses": { "Dexterity": 1 },
+				"traits": [
+					{ "name": "Natural Illusionist", "description": "You know the minor illusion cantrip." },
+					{ "name": "Speak with Small Beasts", "description": "You can communicate simple ideas with Small or smaller beasts." }
+				]
+			},
+			{
+				"name": "Rock Gnome",
+				"abilityBonuses": { "Constitution": 1 },
+				"traits": [
+					{ "name": "Artificer's Lore", "description": "You have proficiency with tinker's tools, and double proficiency on Intelligence (History) checks related to magic items, alchemical objects, or technological devices." },
+					{ "name": "Tinker", "description": "You can tinker with objects to produce small clockwork devices." }
+				],
+				"toolProficiencies": ["Tinker's tools"]
+			}
+		]
+	},
+	{
+		"id": 7,
+		"name": "Half-Elf",
+		"abilityBonuses": { "Charisma": 2 },
+		"size": "Medium",
+		"speed": 30,
+		"languages": ["Common", "Elvish"],
+		"darkvision": 60,
+		"skillProficiencies": [],
+		"traits": [
+			{ "name": "Darkvision", "description": "You can see in dim light within 60 feet as if it were bright light, and in darkness as if it were dim light." },
+			{ "name": "Fey Ancestry", "description": "You have advantage on saving throws against being charmed, and magic can't put you to sleep." },
+			{ "name": "Skill Versatility", "description": "You gain proficiency in two skills of your choice." },
+			{ "name": "Ability Score Increase", "description": "Your Charisma increases by 2, and two other ability scores of your choice increase by 1." }
+		]
+	},
+	{
+		"id": 8,
+		"name": "Half-Orc",
+		"abilityBonuses": { "Strength": 2, "Constitution": 1 },
+		"size": "Medium",
+		"speed": 30,
+		"languages": ["Common", "Orc"],
+		"darkvision": 60,
+		"skillProficiencies": ["Intimidation"],
+		"traits": [
+			{ "name": "Darkvision", "description": "You can see in dim light within 60 feet as if it were bright light, and in darkness as if it were dim light." },
+			{ "name": "Menacing", "description": "You gain proficiency in the Intimidation skill." },
+			{ "name": "Relentless Endurance", "description": "When you are reduced to 0 hit points but not killed outright, you can drop to 1 hit point instead. Once per long rest." },
+			{ "name": "Savage Attacks", "description": "When you score a critical hit with a melee weapon attack, you can roll one of the weapon's damage dice one additional time and add it to the extra damage." }
+		]
+	},
+	{
+		"id": 9,
+		"name": "Tiefling",
+		"abilityBonuses": { "Intelligence": 1, "Charisma": 2 },
+		"size": "Medium",
+		"speed": 30,
+		"languages": ["Common", "Infernal"],
+		"darkvision": 60,
+		"traits": [
+			{ "name": "Darkvision", "description": "You can see in dim light within 60 feet as if it were bright light, and in darkness as if it were dim light." },
+			{ "name": "Hellish Resistance", "description": "You have resistance to fire damage." },
+			{ "name": "Infernal Legacy", "description": "You know the thaumaturgy cantrip. At 3rd level, you can cast hellish rebuke as a 2nd-level spell once per long rest. At 5th level, you can cast darkness once per long rest." }
+		]
+	}
+]

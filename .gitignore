@@ -8,4 +8,5 @@
 /public/Deploy
 tsconfig.tsbuildinfo
 /dist
+/compile
 .continue

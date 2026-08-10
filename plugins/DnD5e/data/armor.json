@@ -1,0 +1,145 @@
+[
+	{
+		"id": 1,
+		"name": "Padded",
+		"category": "light",
+		"ac": { "base": 11, "dexBonus": "full" },
+		"cost": { "amount": 5, "unit": "gp" },
+		"weight": 8,
+		"strengthRequirement": null,
+		"stealthDisadvantage": true,
+		"description": "Quilted cloth armor."
+	},
+	{
+		"id": 2,
+		"name": "Leather",
+		"category": "light",
+		"ac": { "base": 11, "dexBonus": "full" },
+		"cost": { "amount": 10, "unit": "gp" },
+		"weight": 10,
+		"strengthRequirement": null,
+		"stealthDisadvantage": false,
+		"description": "Tough cured hide armor."
+	},
+	{
+		"id": 3,
+		"name": "Studded leather",
+		"category": "light",
+		"ac": { "base": 12, "dexBonus": "full" },
+		"cost": { "amount": 45, "unit": "gp" },
+		"weight": 13,
+		"strengthRequirement": null,
+		"stealthDisadvantage": false,
+		"description": "Leather armor reinforced with metal studs."
+	},
+	{
+		"id": 4,
+		"name": "Hide",
+		"category": "medium",
+		"ac": { "base": 12, "dexBonus": "max2" },
+		"cost": { "amount": 10, "unit": "gp" },
+		"weight": 12,
+		"strengthRequirement": null,
+		"stealthDisadvantage": false,
+		"description": "Crude thick furs worn as armor."
+	},
+	{
+		"id": 5,
+		"name": "Chain shirt",
+		"category": "medium",
+		"ac": { "base": 13, "dexBonus": "max2" },
+		"cost": { "amount": 50, "unit": "gp" },
+		"weight": 20,
+		"strengthRequirement": null,
+		"stealthDisadvantage": false,
+		"description": "A shirt of interlocking metal rings."
+	},
+	{
+		"id": 6,
+		"name": "Scale mail",
+		"category": "medium",
+		"ac": { "base": 14, "dexBonus": "max2" },
+		"cost": { "amount": 50, "unit": "gp" },
+		"weight": 45,
+		"strengthRequirement": null,
+		"stealthDisadvantage": true,
+		"description": "Armor covered in overlapping metal scales."
+	},
+	{
+		"id": 7,
+		"name": "Breastplate",
+		"category": "medium",
+		"ac": { "base": 14, "dexBonus": "max2" },
+		"cost": { "amount": 400, "unit": "gp" },
+		"weight": 20,
+		"strengthRequirement": null,
+		"stealthDisadvantage": false,
+		"description": "A fitted metal chest plate."
+	},
+	{
+		"id": 8,
+		"name": "Half plate",
+		"category": "medium",
+		"ac": { "base": 15, "dexBonus": "max2" },
+		"cost": { "amount": 750, "unit": "gp" },
+		"weight": 40,
+		"strengthRequirement": null,
+		"stealthDisadvantage": true,
+		"description": "Partial plate armor with leather and mail."
+	},
+	{
+		"id": 9,
+		"name": "Ring mail",
+		"category": "heavy",
+		"ac": { "base": 14, "dexBonus": "none" },
+		"cost": { "amount": 30, "unit": "gp" },
+		"weight": 40,
+		"strengthRequirement": null,
+		"stealthDisadvantage": true,
+		"description": "Leather armor reinforced with sewn rings."
+	},
+	{
+		"id": 10,
+		"name": "Chain mail",
+		"category": "heavy",
+		"ac": { "base": 16, "dexBonus": "none" },
+		"cost": { "amount": 75, "unit": "gp" },
+		"weight": 55,
+		"strengthRequirement": 13,
+		"stealthDisadvantage": true,
+		"description": "Interlocking rings, full body protection."
+	},
+	{
+		"id": 11,
+		"name": "Splint",
+		"category": "heavy",
+		"ac": { "base": 17, "dexBonus": "none" },
+		"cost": { "amount": 200, "unit": "gp" },
+		"weight": 60,
+		"strengthRequirement": 15,
+		"stealthDisadvantage": true,
+		"description": "Metal strips over leather over cloth."
+	},
+	{
+		"id": 12,
+		"name": "Plate",
+		"category": "heavy",
+		"ac": { "base": 18, "dexBonus": "none" },
+		"cost": { "amount": 1500, "unit": "gp" },
+		"weight": 65,
+		"strengthRequirement": 15,
+		"stealthDisadvantage": true,
+		"description": "Full suit of fitted metal plates."
+	},
+	{
+		"id": 13,
+		"name": "Shield",
+		"category": "shield",
+		"ac": { "base": 2, "dexBonus": "none" },
+		"cost": { "amount": 10, "unit": "gp" },
+		"weight": 6,
+		"strengthRequirement": null,
+		"stealthDisadvantage": false,
+		"description": "A wooden or metal shield granting +2 to AC."
+	}
+]

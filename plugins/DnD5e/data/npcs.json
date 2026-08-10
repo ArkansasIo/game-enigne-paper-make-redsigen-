@@ -1,0 +1,1403 @@
+[
+  {
+    "id": 1,
+    "name": "Commoner",
+    "size": "Medium",
+    "type": "humanoid (any race)",
+    "alignment": "Any Alignment",
+    "ac": 10,
+    "hp": {
+      "dice": "1d8",
+      "average": 4
+    },
+    "speed": 30,
+    "abilityScores": {
+      "Strength": 10,
+      "Dexterity": 10,
+      "Constitution": 10,
+      "Intelligence": 10,
+      "Wisdom": 10,
+      "Charisma": 10
+    },
+    "savingThrows": [],
+    "skills": [],
+    "damageVulnerabilities": [],
+    "damageResistances": [],
+    "damageImmunities": [],
+    "conditionImmunities": [],
+    "senses": [
+      "Passive Perception 10"
+    ],
+    "languages": [
+      "any one language (usually Common)"
+    ],
+    "challenge": "0",
+    "xp": 10,
+    "traits": [],
+    "actions": [
+      {
+        "name": "Club",
+        "attack": "Melee Weapon Attack: +2 to hit, reach 5 ft., one target",
+        "damage": "2 (1d4) bludgeoning damage",
+        "description": "Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 2 (1d4) bludgeoning damage."
+      }
+    ],
+    "legendaryActions": null
+  },
+  {
+    "id": 2,
+    "name": "Guard",
+    "size": "Medium",
+    "type": "humanoid (any race)",
+    "alignment": "Any Alignment",
+    "ac": 16,
+    "hp": {
+      "dice": "2d8 + 2",
+      "average": 11
+    },
+    "speed": 30,
+    "abilityScores": {
+      "Strength": 13,
+      "Dexterity": 12,
+      "Constitution": 12,
+      "Intelligence": 10,
+      "Wisdom": 11,
+      "Charisma": 10
+    },
+    "savingThrows": [],
+    "skills": [
+      {
+        "name": "Perception",
+        "value": 2
+      }
+    ],
+    "damageVulnerabilities": [],
+    "damageResistances": [],
+    "damageImmunities": [],
+    "conditionImmunities": [],
+    "senses": [
+      "Passive Perception 12"
+    ],
+    "languages": [
+      "any one language (usually Common)"
+    ],
+    "challenge": "1/8",
+    "xp": 25,
+    "traits": [],
+    "actions": [
+      {
+        "name": "Spear",
+        "attack": "Melee or Ranged Weapon Attack: +3 to hit, reach 5 ft. or range 20/60 ft., one target",
+        "damage": "4 (1d6 + 1) piercing damage or 5 (1d8 + 1) piercing damage if used with two hands to make a melee attack",
+        "description": "Melee or Ranged Weapon Attack: +3 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 (1d6 + 1) piercing damage or 5 (1d8 + 1) piercing damage if used with two hands to make a melee attack."
+      }
+    ],
+    "legendaryActions": null
+  },
+  {
+    "id": 3,
+    "name": "Noble",
+    "size": "Medium",
+    "type": "humanoid (any race)",
+    "alignment": "Any Alignment",
+    "ac": 15,
+    "hp": {
+      "dice": "2d8",
+      "average": 9
+    },
+    "speed": 30,
+    "abilityScores": {
+      "Strength": 11,
+      "Dexterity": 12,
+      "Constitution": 11,
+      "Intelligence": 12,
+      "Wisdom": 14,
+      "Charisma": 16
+    },
+    "savingThrows": [],
+    "skills": [
+      {
+        "name": "Deception",
+        "value": 5
+      },
+      {
+        "name": "Insight",
+        "value": 4
+      },
+      {
+        "name": "Persuasion",
+        "value": 5
+      }
+    ],
+    "damageVulnerabilities": [],
+    "damageResistances": [],
+    "damageImmunities": [],
+    "conditionImmunities": [],
+    "senses": [
+      "Passive Perception 12"
+    ],
+    "languages": [
+      "any two languages"
+    ],
+    "challenge": "1/8",
+    "xp": 25,
+    "traits": [],
+    "actions": [
+      {
+        "name": "Rapier",
+        "attack": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target",
+        "damage": "5 (1d8 + 1) piercing damage",
+        "description": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 5 (1d8 + 1) piercing damage."
+      },
+      {
+        "name": "Parry",
+        "attack": null,
+        "damage": null,
+        "description": "The noble adds 2 to its AC against one melee attack that would hit it. To do so, the noble must see the attacker and be wielding a melee weapon."
+      }
+    ],
+    "legendaryActions": null
+  },
+  {
+    "id": 4,
+    "name": "Scout",
+    "size": "Medium",
+    "type": "humanoid (any race)",
+    "alignment": "Any Alignment",
+    "ac": 13,
+    "hp": {
+      "dice": "3d8 + 3",
+      "average": 16
+    },
+    "speed": 30,
+    "abilityScores": {
+      "Strength": 11,
+      "Dexterity": 14,
+      "Constitution": 12,
+      "Intelligence": 11,
+      "Wisdom": 13,
+      "Charisma": 11
+    },
+    "savingThrows": [],
+    "skills": [
+      {
+        "name": "Nature",
+        "value": 4
+      },
+      {
+        "name": "Perception",
+        "value": 5
+      },
+      {
+        "name": "Stealth",
+        "value": 6
+      },
+      {
+        "name": "Survival",
+        "value": 5
+      }
+    ],
+    "damageVulnerabilities": [],
+    "damageResistances": [],
+    "damageImmunities": [],
+    "conditionImmunities": [],
+    "senses": [
+      "Passive Perception 15"
+    ],
+    "languages": [
+      "any one language (usually Common)"
+    ],
+    "challenge": "1/2",
+    "xp": 100,
+    "traits": [
+      {
+        "name": "Keen Hearing and Sight",
+        "description": "The scout has advantage on Wisdom (Perception) checks that rely on hearing or sight."
+      }
+    ],
+    "actions": [
+      {
+        "name": "Multiattack",
+        "attack": null,
+        "damage": null,
+        "description": "The scout makes two melee attacks or two ranged attacks."
+      },
+      {
+        "name": "Shortsword",
+        "attack": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target",
+        "damage": "5 (1d6 + 2) piercing damage",
+        "description": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6 + 2) piercing damage."
+      },
+      {
+        "name": "Longbow",
+        "attack": "Ranged Weapon Attack: +4 to hit, range 150/600 ft., one target",
+        "damage": "6 (1d8 + 2) piercing damage",
+        "description": "Ranged Weapon Attack: +4 to hit, range 150/600 ft., one target. Hit: 6 (1d8 + 2) piercing damage."
+      }
+    ],
+    "legendaryActions": null
+  },
+  {
+    "id": 5,
+    "name": "Thug",
+    "size": "Medium",
+    "type": "humanoid (any race)",
+    "alignment": "Any Non-good Alignment",
+    "ac": 11,
+    "hp": {
+      "dice": "5d8 + 10",
+      "average": 32
+    },
+    "speed": 30,
+    "abilityScores": {
+      "Strength": 15,
+      "Dexterity": 11,
+      "Constitution": 14,
+      "Intelligence": 10,
+      "Wisdom": 10,
+      "Charisma": 11
+    },
+    "savingThrows": [],
+    "skills": [
+      {
+        "name": "Intimidation",
+        "value": 2
+      }
+    ],
+    "damageVulnerabilities": [],
+    "damageResistances": [],
+    "damageImmunities": [],
+    "conditionImmunities": [],
+    "senses": [
+      "Passive Perception 10"
+    ],
+    "languages": [
+      "any one language (usually Common)"
+    ],
+    "challenge": "1/2",
+    "xp": 100,
+    "traits": [
+      {
+        "name": "Pack Tactics",
+        "description": "The thug has advantage on an attack roll against a creature if at least one of the thug's allies is within 5 ft. of the creature and the ally isn't incapacitated."
+      }
+    ],
+    "actions": [
+      {
+        "name": "Multiattack",
+        "attack": null,
+        "damage": null,
+        "description": "The thug makes two melee attacks."
+      },
+      {
+        "name": "Mace",
+        "attack": "Melee Weapon Attack: +4 to hit, reach 5 ft., one creature",
+        "damage": "5 (1d6 + 2) bludgeoning damage",
+        "description": "Melee Weapon Attack: +4 to hit, reach 5 ft., one creature. Hit: 5 (1d6 + 2) bludgeoning damage."
+      },
+      {
+        "name": "Heavy Crossbow",
+        "attack": "Ranged Weapon Attack: +2 to hit, range 100/400 ft., one target",
+        "damage": "5 (1d10) piercing damage",
+        "description": "Ranged Weapon Attack: +2 to hit, range 100/400 ft., one target. Hit: 5 (1d10) piercing damage."
+      }
+    ],
+    "legendaryActions": null
+  },
+  {
+    "id": 6,
+    "name": "Cultist",
+    "size": "Medium",
+    "type": "humanoid (any race)",
+    "alignment": "Any Non-good Alignment",
+    "ac": 12,
+    "hp": {
+      "dice": "2d8",
+      "average": 9
+    },
+    "speed": 30,
+    "abilityScores": {
+      "Strength": 11,
+      "Dexterity": 12,
+      "Constitution": 10,
+      "Intelligence": 10,
+      "Wisdom": 11,
+      "Charisma": 10
+    },
+    "savingThrows": [],
+    "skills": [
+      {
+        "name": "Deception",
+        "value": 2
+      },
+      {
+        "name": "Religion",
+        "value": 2
+      }
+    ],
+    "damageVulnerabilities": [],
+    "damageResistances": [],
+    "damageImmunities": [],
+    "conditionImmunities": [],
+    "senses": [
+      "Passive Perception 10"
+    ],
+    "languages": [
+      "any one language (usually Common)"
+    ],
+    "challenge": "1/8",
+    "xp": 25,
+    "traits": [
+      {
+        "name": "Dark Devotion",
+        "description": "The cultist has advantage on saving throws against being charmed or frightened."
+      }
+    ],
+    "actions": [
+      {
+        "name": "Scimitar",
+        "attack": "Melee Weapon Attack: +3 to hit, reach 5 ft., one creature",
+        "damage": "4 (1d6 + 1) slashing damage",
+        "description": "Melee Weapon Attack: +3 to hit, reach 5 ft., one creature. Hit: 4 (1d6 + 1) slashing damage."
+      }
+    ],
+    "legendaryActions": null
+  },
+  {
+    "id": 7,
+    "name": "Bandit",
+    "size": "Medium",
+    "type": "humanoid (any race)",
+    "alignment": "Any Non-lawful Alignment",
+    "ac": 12,
+    "hp": {
+      "dice": "2d8 + 2",
+      "average": 11
+    },
+    "speed": 30,
+    "abilityScores": {
+      "Strength": 11,
+      "Dexterity": 12,
+      "Constitution": 12,
+      "Intelligence": 10,
+      "Wisdom": 10,
+      "Charisma": 10
+    },
+    "savingThrows": [],
+    "skills": [],
+    "damageVulnerabilities": [],
+    "damageResistances": [],
+    "damageImmunities": [],
+    "conditionImmunities": [],
+    "senses": [
+      "Passive Perception 10"
+    ],
+    "languages": [
+      "any one language (usually Common)"
+    ],
+    "challenge": "1/8",
+    "xp": 25,
+    "traits": [],
+    "actions": [
+      {
+        "name": "Scimitar",
+        "attack": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target",
+        "damage": "4 (1d6 + 1) slashing damage",
+        "description": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 4 (1d6 + 1) slashing damage."
+      },
+      {
+        "name": "Light Crossbow",
+        "attack": "Ranged Weapon Attack: +3 to hit, range 80/320 ft., one target",
+        "damage": "5 (1d8 + 1) piercing damage",
+        "description": "Ranged Weapon Attack: +3 to hit, range 80/320 ft., one target. Hit: 5 (1d8 + 1) piercing damage."
+      }
+    ],
+    "legendaryActions": null
+  },
+  {
+    "id": 8,
+    "name": "Bandit Captain",
+    "size": "Medium",
+    "type": "humanoid (any race)",
+    "alignment": "Any Non-lawful Alignment",
+    "ac": 15,
+    "hp": {
+      "dice": "10d8 + 20",
+      "average": 65
+    },
+    "speed": 30,
+    "abilityScores": {
+      "Strength": 15,
+      "Dexterity": 16,
+      "Constitution": 14,
+      "Intelligence": 14,
+      "Wisdom": 11,
+      "Charisma": 14
+    },
+    "savingThrows": [
+      "STR +4",
+      "DEX +5",
+      "WIS +2"
+    ],
+    "skills": [
+      {
+        "name": "Athletics",
+        "value": 4
+      },
+      {
+        "name": "Deception",
+        "value": 4
+      }
+    ],
+    "damageVulnerabilities": [],
+    "damageResistances": [],
+    "damageImmunities": [],
+    "conditionImmunities": [],
+    "senses": [
+      "Passive Perception 10"
+    ],
+    "languages": [
+      "any two languages"
+    ],
+    "challenge": "2",
+    "xp": 450,
+    "traits": [],
+    "actions": [
+      {
+        "name": "Multiattack",
+        "attack": null,
+        "damage": null,
+        "description": "The captain makes three melee attacks: two with its scimitar and one with its dagger. Or the captain makes two ranged attacks with its daggers."
+      },
+      {
+        "name": "Scimitar",
+        "attack": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target",
+        "damage": "6 (1d6 + 3) slashing damage",
+        "description": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6 + 3) slashing damage."
+      },
+      {
+        "name": "Dagger",
+        "attack": "Melee or Ranged Weapon Attack: +5 to hit, reach 5 ft. or range 20/60 ft., one target",
+        "damage": "5 (1d4 + 3) piercing damage",
+        "description": "Melee or Ranged Weapon Attack: +5 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 5 (1d4 + 3) piercing damage."
+      },
+      {
+        "name": "Parry",
+        "attack": null,
+        "damage": null,
+        "description": "The captain adds 2 to its AC against one melee attack that would hit it. To do so, the captain must see the attacker and be wielding a melee weapon."
+      }
+    ],
+    "legendaryActions": null
+  },
+  {
+    "id": 9,
+    "name": "Berserker",
+    "size": "Medium",
+    "type": "humanoid (any race)",
+    "alignment": "Any Chaotic Alignment",
+    "ac": 13,
+    "hp": {
+      "dice": "9d8 + 27",
+      "average": 67
+    },
+    "speed": 30,
+    "abilityScores": {
+      "Strength": 16,
+      "Dexterity": 12,
+      "Constitution": 17,
+      "Intelligence": 9,
+      "Wisdom": 11,
+      "Charisma": 9
+    },
+    "savingThrows": [],
+    "skills": [],
+    "damageVulnerabilities": [],
+    "damageResistances": [],
+    "damageImmunities": [],
+    "conditionImmunities": [],
+    "senses": [
+      "Passive Perception 10"
+    ],
+    "languages": [
+      "any one language (usually Common)"
+    ],
+    "challenge": "2",
+    "xp": 450,
+    "traits": [
+      {
+        "name": "Reckless",
+        "description": "At the start of its turn, the berserker can gain advantage on all melee weapon attack rolls during that turn, but attack rolls against it have advantage until the start of its next turn."
+      }
+    ],
+    "actions": [
+      {
+        "name": "Greataxe",
+        "attack": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target",
+        "damage": "9 (1d12 + 3) slashing damage",
+        "description": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 9 (1d12 + 3) slashing damage."
+      }
+    ],
+    "legendaryActions": null
+  },
+  {
+    "id": 10,
+    "name": "Knight",
+    "size": "Medium",
+    "type": "humanoid (any race)",
+    "alignment": "Any Alignment",
+    "ac": 18,
+    "hp": {
+      "dice": "8d8 + 16",
+      "average": 52
+    },
+    "speed": 30,
+    "abilityScores": {
+      "Strength": 16,
+      "Dexterity": 11,
+      "Constitution": 14,
+      "Intelligence": 11,
+      "Wisdom": 11,
+      "Charisma": 15
+    },
+    "savingThrows": [
+      "CON +4",
+      "WIS +2"
+    ],
+    "skills": [],
+    "damageVulnerabilities": [],
+    "damageResistances": [],
+    "damageImmunities": [],
+    "conditionImmunities": [],
+    "senses": [
+      "Passive Perception 10"
+    ],
+    "languages": [
+      "any one language (usually Common)"
+    ],
+    "challenge": "3",
+    "xp": 700,
+    "traits": [
+      {
+        "name": "Brave",
+        "description": "The knight has advantage on saving throws against being frightened."
+      }
+    ],
+    "actions": [
+      {
+        "name": "Multiattack",
+        "attack": null,
+        "damage": null,
+        "description": "The knight makes two melee attacks."
+      },
+      {
+        "name": "Greatsword",
+        "attack": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target",
+        "damage": "10 (2d6 + 3) slashing damage",
+        "description": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 10 (2d6 + 3) slashing damage."
+      },
+      {
+        "name": "Heavy Crossbow",
+        "attack": "Ranged Weapon Attack: +2 to hit, range 100/400 ft., one target",
+        "damage": "5 (1d10) piercing damage",
+        "description": "Ranged Weapon Attack: +2 to hit, range 100/400 ft., one target. Hit: 5 (1d10) piercing damage."
+      },
+      {
+        "name": "Leadership",
+        "attack": null,
+        "damage": null,
+        "description": "For 1 minute, the knight can utter a special command or warning whenever a nonhostile creature that it can see within 30 ft. of it makes an attack roll or a saving throw. The creature can add a d4 to its roll provided it can hear and understand the knight. A creature can benefit from only one Leadership die at a time. This effect ends if the knight is incapacitated."
+      },
+      {
+        "name": "Parry",
+        "attack": null,
+        "damage": null,
+        "description": "The knight adds 2 to its AC against one melee attack that would hit it. To do so, the knight must see the attacker and be wielding a melee weapon."
+      }
+    ],
+    "legendaryActions": null
+  },
+  {
+    "id": 11,
+    "name": "Priest",
+    "size": "Medium",
+    "type": "humanoid (any race)",
+    "alignment": "Any Alignment",
+    "ac": 13,
+    "hp": {
+      "dice": "5d8 + 5",
+      "average": 27
+    },
+    "speed": 25,
+    "abilityScores": {
+      "Strength": 10,
+      "Dexterity": 10,
+      "Constitution": 12,
+      "Intelligence": 13,
+      "Wisdom": 16,
+      "Charisma": 13
+    },
+    "savingThrows": [],
+    "skills": [
+      {
+        "name": "Medicine",
+        "value": 7
+      },
+      {
+        "name": "Persuasion",
+        "value": 3
+      },
+      {
+        "name": "Religion",
+        "value": 4
+      }
+    ],
+    "damageVulnerabilities": [],
+    "damageResistances": [],
+    "damageImmunities": [],
+    "conditionImmunities": [],
+    "senses": [
+      "Passive Perception 13"
+    ],
+    "languages": [
+      "any two languages"
+    ],
+    "challenge": "2",
+    "xp": 450,
+    "traits": [
+      {
+        "name": "Divine Eminence",
+        "description": "As a bonus action, the priest can expend a spell slot to cause its melee weapon attacks to magically deal an extra 10 (3d6) radiant damage to a target on a hit. This benefit lasts until the end of the turn. If the priest expends a spell slot of 2nd level or higher, the extra damage increases by 1d6 for each level above 1st."
+      },
+      {
+        "name": "Spellcasting",
+        "description": "The priest is a 5th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 13, +5 to hit with spell attacks). The priest has the following cleric spells prepared:\n\n- Cantrips (at will): light, sacred flame, thaumaturgy\n- 1st level (4 slots): cure wounds, guiding bolt, sanctuary\n- 2nd level (3 slots): lesser restoration, spiritual weapon\n- 3rd level (2 slots): dispel magic, spirit guardians"
+      }
+    ],
+    "actions": [
+      {
+        "name": "Mace",
+        "attack": "Melee Weapon Attack: +2 to hit, reach 5 ft., one target",
+        "damage": "3 (1d6) bludgeoning damage",
+        "description": "Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 3 (1d6) bludgeoning damage."
+      }
+    ],
+    "legendaryActions": null
+  },
+  {
+    "id": 12,
+    "name": "Mage",
+    "size": "Medium",
+    "type": "humanoid (any race)",
+    "alignment": "Any Alignment",
+    "ac": 12,
+    "hp": {
+      "dice": "9d8",
+      "average": 40
+    },
+    "speed": 30,
+    "abilityScores": {
+      "Strength": 9,
+      "Dexterity": 14,
+      "Constitution": 11,
+      "Intelligence": 17,
+      "Wisdom": 12,
+      "Charisma": 11
+    },
+    "savingThrows": [
+      "INT +6",
+      "WIS +4"
+    ],
+    "skills": [
+      {
+        "name": "Arcana",
+        "value": 6
+      },
+      {
+        "name": "History",
+        "value": 6
+      }
+    ],
+    "damageVulnerabilities": [],
+    "damageResistances": [],
+    "damageImmunities": [],
+    "conditionImmunities": [],
+    "senses": [
+      "Passive Perception 11"
+    ],
+    "languages": [
+      "any four languages"
+    ],
+    "challenge": "6",
+    "xp": 2300,
+    "traits": [
+      {
+        "name": "Spellcasting",
+        "description": "The mage is a 9th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 14, +6 to hit with spell attacks). The mage has the following wizard spells prepared:\n\n- Cantrips (at will): fire bolt, light, mage hand, prestidigitation\n- 1st level (4 slots): detect magic, mage armor, magic missile, shield\n- 2nd level (3 slots): misty step, suggestion\n- 3rd level (3 slots): counterspell, fireball, fly\n- 4th level (3 slots): greater invisibility, ice storm\n- 5th level (1 slot): cone of cold"
+      }
+    ],
+    "actions": [
+      {
+        "name": "Dagger",
+        "attack": "Melee or Ranged Weapon Attack: +5 to hit, reach 5 ft. or range 20/60 ft., one target",
+        "damage": "4 (1d4 + 2) piercing damage",
+        "description": "Melee or Ranged Weapon Attack: +5 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 (1d4 + 2) piercing damage."
+      }
+    ],
+    "legendaryActions": null
+  },
+  {
+    "id": 13,
+    "name": "Archmage",
+    "size": "Medium",
+    "type": "humanoid (any race)",
+    "alignment": "Any Alignment",
+    "ac": 12,
+    "hp": {
+      "dice": "18d8 + 18",
+      "average": 99
+    },
+    "speed": 30,
+    "abilityScores": {
+      "Strength": 10,
+      "Dexterity": 14,
+      "Constitution": 12,
+      "Intelligence": 20,
+      "Wisdom": 15,
+      "Charisma": 16
+    },
+    "savingThrows": [
+      "INT +9",
+      "WIS +6"
+    ],
+    "skills": [
+      {
+        "name": "Arcana",
+        "value": 13
+      },
+      {
+        "name": "History",
+        "value": 13
+      }
+    ],
+    "damageVulnerabilities": [],
+    "damageResistances": [
+      "damage from spells",
+      "bludgeoning, piercing, and slashing from nonmagical attacks (from stoneskin)"
+    ],
+    "damageImmunities": [],
+    "conditionImmunities": [],
+    "senses": [
+      "Passive Perception 12"
+    ],
+    "languages": [
+      "any six languages"
+    ],
+    "challenge": "12",
+    "xp": 8400,
+    "traits": [
+      {
+        "name": "Magic Resistance",
+        "description": "The archmage has advantage on saving throws against spells and other magical effects."
+      },
+      {
+        "name": "Spellcasting",
+        "description": "The archmage is an 18th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 17, +9 to hit with spell attacks). The archmage can cast disguise self and invisibility at will and has the following wizard spells prepared:\n\n- Cantrips (at will): fire bolt, light, mage hand, prestidigitation, shocking grasp\n- 1st level (4 slots): detect magic, identify, mage armor*, magic missile\n- 2nd level (3 slots): detect thoughts, mirror image, misty step\n- 3rd level (3 slots): counterspell, fly, lightning bolt\n- 4th level (3 slots): banishment, fire shield, stoneskin*\n- 5th level (3 slots): cone of cold, scrying, wall of force\n- 6th level (1 slot): globe of invulnerability\n- 7th level (1 slot): teleport\n- 8th level (1 slot): mind blank*\n- 9th level (1 slot): time stop\n* The archmage casts these spells on itself before combat."
+      }
+    ],
+    "actions": [
+      {
+        "name": "Dagger",
+        "attack": "Melee or Ranged Weapon Attack: +6 to hit, reach 5 ft. or range 20/60 ft., one target",
+        "damage": "4 (1d4 + 2) piercing damage",
+        "description": "Melee or Ranged Weapon Attack: +6 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 (1d4 + 2) piercing damage."
+      }
+    ],
+    "legendaryActions": null
+  },
+  {
+    "id": 14,
+    "name": "Veteran",
+    "size": "Medium",
+    "type": "humanoid (any race)",
+    "alignment": "Any Alignment",
+    "ac": 17,
+    "hp": {
+      "dice": "9d8 + 18",
+      "average": 58
+    },
+    "speed": 30,
+    "abilityScores": {
+      "Strength": 16,
+      "Dexterity": 13,
+      "Constitution": 14,
+      "Intelligence": 10,
+      "Wisdom": 11,
+      "Charisma": 10
+    },
+    "savingThrows": [],
+    "skills": [
+      {
+        "name": "Athletics",
+        "value": 5
+      },
+      {
+        "name": "Perception",
+        "value": 2
+      }
+    ],
+    "damageVulnerabilities": [],
+    "damageResistances": [],
+    "damageImmunities": [],
+    "conditionImmunities": [],
+    "senses": [
+      "Passive Perception 12"
+    ],
+    "languages": [
+      "any one language (usually Common)"
+    ],
+    "challenge": "3",
+    "xp": 700,
+    "traits": [],
+    "actions": [
+      {
+        "name": "Multiattack",
+        "attack": null,
+        "damage": null,
+        "description": "The veteran makes two longsword attacks. If it has a shortsword drawn, it can also make a shortsword attack."
+      },
+      {
+        "name": "Longsword",
+        "attack": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target",
+        "damage": "7 (1d8 + 3) slashing damage, or 8 (1d10 + 3) slashing damage if used with two hands",
+        "description": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 7 (1d8 + 3) slashing damage, or 8 (1d10 + 3) slashing damage if used with two hands."
+      },
+      {
+        "name": "Shortsword",
+        "attack": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target",
+        "damage": "6 (1d6 + 3) piercing damage",
+        "description": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6 + 3) piercing damage."
+      },
+      {
+        "name": "Heavy Crossbow",
+        "attack": "Ranged Weapon Attack: +3 to hit, range 100/400 ft., one target",
+        "damage": "6 (1d10 + 1) piercing damage",
+        "description": "Ranged Weapon Attack: +3 to hit, range 100/400 ft., one target. Hit: 6 (1d10 + 1) piercing damage."
+      }
+    ],
+    "legendaryActions": null
+  },
+  {
+    "id": 15,
+    "name": "Assassin",
+    "size": "Medium",
+    "type": "humanoid (any race)",
+    "alignment": "Any Non-good Alignment",
+    "ac": 15,
+    "hp": {
+      "dice": "12d8 + 24",
+      "average": 78
+    },
+    "speed": 30,
+    "abilityScores": {
+      "Strength": 11,
+      "Dexterity": 16,
+      "Constitution": 14,
+      "Intelligence": 13,
+      "Wisdom": 11,
+      "Charisma": 10
+    },
+    "savingThrows": [
+      "DEX +6",
+      "INT +4"
+    ],
+    "skills": [
+      {
+        "name": "Acrobatics",
+        "value": 6
+      },
+      {
+        "name": "Deception",
+        "value": 3
+      },
+      {
+        "name": "Perception",
+        "value": 3
+      },
+      {
+        "name": "Stealth",
+        "value": 9
+      }
+    ],
+    "damageVulnerabilities": [],
+    "damageResistances": [
+      "poison"
+    ],
+    "damageImmunities": [],
+    "conditionImmunities": [],
+    "senses": [
+      "Passive Perception 13"
+    ],
+    "languages": [
+      "Thieves' cant plus any two languages"
+    ],
+    "challenge": "8",
+    "xp": 3900,
+    "traits": [
+      {
+        "name": "Assassinate",
+        "description": "During its first turn, the assassin has advantage on attack rolls against any creature that hasn't taken a turn. Any hit the assassin scores against a surprised creature is a critical hit."
+      },
+      {
+        "name": "Evasion",
+        "description": "If the assassin is subjected to an effect that allows it to make a Dexterity saving throw to take only half damage, the assassin instead takes no damage if it succeeds on the saving throw, and only half damage if it fails."
+      },
+      {
+        "name": "Sneak Attack (1/Turn)",
+        "description": "The assassin deals an extra 13 (4d6) damage when it hits a target with a weapon attack and has advantage on the attack roll, or when the target is within 5 ft. of an ally of the assassin that isn't incapacitated and the assassin doesn't have disadvantage on the attack roll."
+      }
+    ],
+    "actions": [
+      {
+        "name": "Multiattack",
+        "attack": null,
+        "damage": null,
+        "description": "The assassin makes two shortsword attacks."
+      },
+      {
+        "name": "Shortsword",
+        "attack": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target",
+        "damage": "6 (1d6 + 3) piercing damage, and the target must make a DC 15 Constitution saving throw, taking 24 (7d6) poison damage on a failed save, or half as much damage on a successful one",
+        "description": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 6 (1d6 + 3) piercing damage, and the target must make a DC 15 Constitution saving throw, taking 24 (7d6) poison damage on a failed save, or half as much damage on a successful one."
+      },
+      {
+        "name": "Light Crossbow",
+        "attack": "Ranged Weapon Attack: +6 to hit, range 80/320 ft., one target",
+        "damage": "7 (1d8 + 3) piercing damage, and the target must make a DC 15 Constitution saving throw, taking 24 (7d6) poison damage on a failed save, or half as much damage on a successful one",
+        "description": "Ranged Weapon Attack: +6 to hit, range 80/320 ft., one target. Hit: 7 (1d8 + 3) piercing damage, and the target must make a DC 15 Constitution saving throw, taking 24 (7d6) poison damage on a failed save, or half as much damage on a successful one."
+      }
+    ],
+    "legendaryActions": null
+  },
+  {
+    "id": 16,
+    "name": "Gladiator",
+    "size": "Medium",
+    "type": "humanoid (any race)",
+    "alignment": "Any Alignment",
+    "ac": 16,
+    "hp": {
+      "dice": "15d8 + 45",
+      "average": 112
+    },
+    "speed": 30,
+    "abilityScores": {
+      "Strength": 18,
+      "Dexterity": 15,
+      "Constitution": 16,
+      "Intelligence": 10,
+      "Wisdom": 12,
+      "Charisma": 15
+    },
+    "savingThrows": [
+      "STR +7",
+      "DEX +5",
+      "CON +6"
+    ],
+    "skills": [
+      {
+        "name": "Athletics",
+        "value": 10
+      },
+      {
+        "name": "Intimidation",
+        "value": 5
+      }
+    ],
+    "damageVulnerabilities": [],
+    "damageResistances": [],
+    "damageImmunities": [],
+    "conditionImmunities": [],
+    "senses": [
+      "Passive Perception 11"
+    ],
+    "languages": [
+      "any one language (usually Common)"
+    ],
+    "challenge": "5",
+    "xp": 1800,
+    "traits": [
+      {
+        "name": "Brave",
+        "description": "The gladiator has advantage on saving throws against being frightened."
+      },
+      {
+        "name": "Brute",
+        "description": "A melee weapon deals one extra die of its damage when the gladiator hits with it (included in the attack)."
+      }
+    ],
+    "actions": [
+      {
+        "name": "Multiattack",
+        "attack": null,
+        "damage": null,
+        "description": "The gladiator makes three melee attacks or two ranged attacks."
+      },
+      {
+        "name": "Spear",
+        "attack": "Melee or Ranged Weapon Attack: +7 to hit, reach 5 ft. or range 20/60 ft., one target",
+        "damage": "11 (2d6 + 4) piercing damage, or 13 (2d8 + 4) piercing damage if used with two hands to make a melee attack",
+        "description": "Melee or Ranged Weapon Attack: +7 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 11 (2d6 + 4) piercing damage, or 13 (2d8 + 4) piercing damage if used with two hands to make a melee attack."
+      },
+      {
+        "name": "Shield Bash",
+        "attack": "Melee Weapon Attack: +7 to hit, reach 5 ft., one creature",
+        "damage": "9 (2d4 + 4) bludgeoning damage. If the target is a Medium or smaller creature, it must succeed on a DC 15 Strength saving throw or be knocked prone",
+        "description": "Melee Weapon Attack: +7 to hit, reach 5 ft., one creature. Hit: 9 (2d4 + 4) bludgeoning damage. If the target is a Medium or smaller creature, it must succeed on a DC 15 Strength saving throw or be knocked prone."
+      },
+      {
+        "name": "Parry",
+        "attack": null,
+        "damage": null,
+        "description": "The gladiator adds 3 to its AC against one melee attack that would hit it. To do so, the gladiator must see the attacker and be wielding a melee weapon."
+      }
+    ],
+    "legendaryActions": null
+  },
+  {
+    "id": 17,
+    "name": "Druid",
+    "size": "Medium",
+    "type": "humanoid (any race)",
+    "alignment": "Any Alignment",
+    "ac": 11,
+    "hp": {
+      "dice": "5d8 + 5",
+      "average": 27
+    },
+    "speed": 30,
+    "abilityScores": {
+      "Strength": 10,
+      "Dexterity": 12,
+      "Constitution": 13,
+      "Intelligence": 12,
+      "Wisdom": 15,
+      "Charisma": 11
+    },
+    "savingThrows": [],
+    "skills": [
+      {
+        "name": "Medicine",
+        "value": 4
+      },
+      {
+        "name": "Nature",
+        "value": 3
+      },
+      {
+        "name": "Perception",
+        "value": 4
+      }
+    ],
+    "damageVulnerabilities": [],
+    "damageResistances": [],
+    "damageImmunities": [],
+    "conditionImmunities": [],
+    "senses": [
+      "Passive Perception 14"
+    ],
+    "languages": [
+      "Druidic plus any two languages"
+    ],
+    "challenge": "2",
+    "xp": 450,
+    "traits": [
+      {
+        "name": "Spellcasting",
+        "description": "The druid is a 4th-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks). It has the following druid spells prepared:\n\n- Cantrips (at will): druidcraft, produce flame, shillelagh\n- 1st level (4 slots): entangle, longstrider, speak with animals, thunderwave\n- 2nd level (3 slots): animal messenger, barkskin"
+      }
+    ],
+    "actions": [
+      {
+        "name": "Quarterstaff",
+        "attack": "Melee Weapon Attack: +2 to hit (+4 to hit with shillelagh), reach 5 ft., one target",
+        "damage": "3 (1d6) bludgeoning damage, 4 (1d8) bludgeoning damage if wielded with two hands, or 6 (1d8 + 2) bludgeoning damage with shillelagh",
+        "description": "Melee Weapon Attack: +2 to hit (+4 to hit with shillelagh), reach 5 ft., one target. Hit: 3 (1d6) bludgeoning damage, 4 (1d8) bludgeoning damage if wielded with two hands, or 6 (1d8 + 2) bludgeoning damage with shillelagh."
+      }
+    ],
+    "legendaryActions": null
+  },
+  {
+    "id": 18,
+    "name": "Spy",
+    "size": "Medium",
+    "type": "humanoid (any race)",
+    "alignment": "Any Alignment",
+    "ac": 12,
+    "hp": {
+      "dice": "6d8",
+      "average": 27
+    },
+    "speed": 30,
+    "abilityScores": {
+      "Strength": 10,
+      "Dexterity": 15,
+      "Constitution": 10,
+      "Intelligence": 12,
+      "Wisdom": 14,
+      "Charisma": 16
+    },
+    "savingThrows": [],
+    "skills": [
+      {
+        "name": "Deception",
+        "value": 5
+      },
+      {
+        "name": "Insight",
+        "value": 4
+      },
+      {
+        "name": "Investigation",
+        "value": 5
+      },
+      {
+        "name": "Perception",
+        "value": 6
+      },
+      {
+        "name": "Persuasion",
+        "value": 5
+      },
+      {
+        "name": "Stealth",
+        "value": 4
+      }
+    ],
+    "damageVulnerabilities": [],
+    "damageResistances": [],
+    "damageImmunities": [],
+    "conditionImmunities": [],
+    "senses": [
+      "Passive Perception 16"
+    ],
+    "languages": [
+      "any two languages"
+    ],
+    "challenge": "1",
+    "xp": 200,
+    "traits": [
+      {
+        "name": "Cunning Action",
+        "description": "On each of its turns, the spy can use a bonus action to take the Dash, Disengage, or Hide action."
+      },
+      {
+        "name": "Sneak Attack (1/Turn)",
+        "description": "The spy deals an extra 7 (2d6) damage when it hits a target with a weapon attack and has advantage on the attack roll, or when the target is within 5 ft. of an ally of the spy that isn't incapacitated and the spy doesn't have disadvantage on the attack roll."
+      }
+    ],
+    "actions": [
+      {
+        "name": "Multiattack",
+        "attack": null,
+        "damage": null,
+        "description": "The spy makes two melee attacks."
+      },
+      {
+        "name": "Shortsword",
+        "attack": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target",
+        "damage": "5 (1d6 + 2) piercing damage",
+        "description": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6 + 2) piercing damage."
+      },
+      {
+        "name": "Hand Crossbow",
+        "attack": "Ranged Weapon Attack: +4 to hit, range 30/120 ft., one target",
+        "damage": "5 (1d6 + 2) piercing damage",
+        "description": "Ranged Weapon Attack: +4 to hit, range 30/120 ft., one target. Hit: 5 (1d6 + 2) piercing damage."
+      }
+    ],
+    "legendaryActions": null
+  },
+  {
+    "id": 19,
+    "name": "Acolyte",
+    "size": "Medium",
+    "type": "humanoid (any race)",
+    "alignment": "Any Alignment",
+    "ac": 10,
+    "hp": {
+      "dice": "2d8",
+      "average": 9
+    },
+    "speed": 30,
+    "abilityScores": {
+      "Strength": 10,
+      "Dexterity": 10,
+      "Constitution": 10,
+      "Intelligence": 10,
+      "Wisdom": 14,
+      "Charisma": 11
+    },
+    "savingThrows": [],
+    "skills": [
+      {
+        "name": "Medicine",
+        "value": 4
+      },
+      {
+        "name": "Religion",
+        "value": 2
+      }
+    ],
+    "damageVulnerabilities": [],
+    "damageResistances": [],
+    "damageImmunities": [],
+    "conditionImmunities": [],
+    "senses": [
+      "Passive Perception 12"
+    ],
+    "languages": [
+      "any one language (usually Common)"
+    ],
+    "challenge": "1/4",
+    "xp": 50,
+    "traits": [
+      {
+        "name": "Spellcasting",
+        "description": "The acolyte is a 1st-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks). The acolyte has following cleric spells prepared:\n\n- Cantrips (at will): light, sacred flame, thaumaturgy\n- 1st level (3 slots): bless, cure wounds, sanctuary"
+      }
+    ],
+    "actions": [
+      {
+        "name": "Club",
+        "attack": "Melee Weapon Attack: +2 to hit, reach 5 ft., one target",
+        "damage": "2 (1d4) bludgeoning damage",
+        "description": "Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 2 (1d4) bludgeoning damage."
+      }
+    ],
+    "legendaryActions": null
+  },
+  {
+    "id": 20,
+    "name": "Tribal Warrior",
+    "size": "Medium",
+    "type": "humanoid (any race)",
+    "alignment": "Any Alignment",
+    "ac": 12,
+    "hp": {
+      "dice": "2d8 + 2",
+      "average": 11
+    },
+    "speed": 30,
+    "abilityScores": {
+      "Strength": 13,
+      "Dexterity": 11,
+      "Constitution": 12,
+      "Intelligence": 8,
+      "Wisdom": 11,
+      "Charisma": 8
+    },
+    "savingThrows": [],
+    "skills": [],
+    "damageVulnerabilities": [],
+    "damageResistances": [],
+    "damageImmunities": [],
+    "conditionImmunities": [],
+    "senses": [
+      "Passive Perception 10"
+    ],
+    "languages": [
+      "any one language"
+    ],
+    "challenge": "1/8",
+    "xp": 25,
+    "traits": [
+      {
+        "name": "Pack Tactics",
+        "description": "The warrior has advantage on an attack roll against a creature if at least one of the warrior's allies is within 5 ft. of the creature and the ally isn't incapacitated."
+      }
+    ],
+    "actions": [
+      {
+        "name": "Spear",
+        "attack": "Melee or Ranged Weapon Attack: +3 to hit, reach 5 ft. or range 20/60 ft., one target",
+        "damage": "4 (1d6 + 1) piercing damage, or 5 (1d8 + 1) piercing damage if used with two hands to make a melee attack",
+        "description": "Melee or Ranged Weapon Attack: +3 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 (1d6 + 1) piercing damage, or 5 (1d8 + 1) piercing damage if used with two hands to make a melee attack."
+      }
+    ],
+    "legendaryActions": null
+  },
+  {
+    "id": 21,
+    "name": "Cult Fanatic",
+    "size": "Medium",
+    "type": "humanoid (any race)",
+    "alignment": "Any Non-good Alignment",
+    "ac": 13,
+    "hp": {
+      "dice": "6d8 - 5",
+      "average": 22
+    },
+    "speed": 30,
+    "abilityScores": {
+      "Strength": 11,
+      "Dexterity": 14,
+      "Constitution": 12,
+      "Intelligence": 10,
+      "Wisdom": 13,
+      "Charisma": 14
+    },
+    "savingThrows": [],
+    "skills": [
+      {
+        "name": "Deception",
+        "value": 4
+      },
+      {
+        "name": "Persuasion",
+        "value": 4
+      },
+      {
+        "name": "Religion",
+        "value": 2
+      }
+    ],
+    "damageVulnerabilities": [],
+    "damageResistances": [],
+    "damageImmunities": [],
+    "conditionImmunities": [],
+    "senses": [
+      "Passive Perception 11"
+    ],
+    "languages": [
+      "any one language (usually Common)"
+    ],
+    "challenge": "2",
+    "xp": 450,
+    "traits": [
+      {
+        "name": "Dark Devotion",
+        "description": "The fanatic has advantage on saving throws against being charmed or frightened."
+      },
+      {
+        "name": "Spellcasting",
+        "description": "The fanatic is a 4th-level spellcaster. Its spell casting ability is Wisdom (spell save DC 11, +3 to hit with spell attacks). The fanatic has the following cleric spells prepared:\n\nCantrips (at will): light, sacred flame, thaumaturgy\n- 1st level (4 slots): command, inflict wounds, shield of faith\n- 2nd level (3 slots): hold person, spiritual weapon"
+      }
+    ],
+    "actions": [
+      {
+        "name": "Multiattack",
+        "attack": null,
+        "damage": null,
+        "description": "The fanatic makes two melee attacks."
+      },
+      {
+        "name": "Dagger",
+        "attack": "Melee or Ranged Weapon Attack: +4 to hit, reach 5 ft. or range 20/60 ft., one creature",
+        "damage": "4 (1d4 + 2) piercing damage",
+        "description": "Melee or Ranged Weapon Attack: +4 to hit, reach 5 ft. or range 20/60 ft., one creature. Hit: 4 (1d4 + 2) piercing damage."
+      }
+    ],
+    "legendaryActions": null
+  }
+]

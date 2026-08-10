@@ -1,0 +1,158 @@
+[
+	{
+		"id": 1,
+		"name": "Acolyte",
+		"skills": ["Insight", "Religion"],
+		"toolProficiencies": [],
+		"languages": ["Two of your choice"],
+		"startingGold": 15,
+		"feature": {
+			"name": "Shelter of the Faithful",
+			"description": "You and your adventuring companions can expect to receive free healing and care at a temple, shrine, or other established presence of your faith."
+		}
+	},
+	{
+		"id": 2,
+		"name": "Charlatan",
+		"skills": ["Deception", "Sleight_of_Hand"],
+		"toolProficiencies": ["Disguise kit", "Forgery kit"],
+		"languages": [],
+		"startingGold": 15,
+		"feature": {
+			"name": "False Identity",
+			"description": "You have created a second identity that includes documentation, established acquaintances, and disguises that allow you to assume that persona."
+		}
+	},
+	{
+		"id": 3,
+		"name": "Criminal",
+		"skills": ["Deception", "Stealth"],
+		"toolProficiencies": ["One gaming set", "Thieves' tools"],
+		"languages": [],
+		"startingGold": 15,
+		"feature": {
+			"name": "Criminal Contact",
+			"description": "You have a reliable and trustworthy contact who acts as your liaison to a network of other criminals."
+		}
+	},
+	{
+		"id": 4,
+		"name": "Entertainer",
+		"skills": ["Acrobatics", "Performance"],
+		"toolProficiencies": ["Disguise kit", "One musical instrument"],
+		"languages": [],
+		"startingGold": 15,
+		"feature": {
+			"name": "By Popular Demand",
+			"description": "You can always find a place to perform, usually in an inn or tavern, and receive free lodging and food while performing."
+		}
+	},
+	{
+		"id": 5,
+		"name": "Folk Hero",
+		"skills": ["Animal Handling", "Survival"],
+		"toolProficiencies": ["One artisan's tools", "Vehicles (land)"],
+		"languages": [],
+		"startingGold": 10,
+		"feature": {
+			"name": "Rustic Hospitality",
+			"description": "Since you come from the ranks of the common folk, you fit in among them easily. Common folk will shelter you and hide you from those who might harm you."
+		}
+	},
+	{
+		"id": 6,
+		"name": "Guild Artisan",
+		"skills": ["Insight", "Persuasion"],
+		"toolProficiencies": ["One artisan's tools"],
+		"languages": ["One of your choice"],
+		"startingGold": 15,
+		"feature": {
+			"name": "Guild Membership",
+			"description": "As an established and respected member of a guild, you can rely on certain benefits: a place to stay, contacts, and guild members willing to help."
+		}
+	},
+	{
+		"id": 7,
+		"name": "Hermit",
+		"skills": ["Medicine", "Religion"],
+		"toolProficiencies": ["Herbalism kit"],
+		"languages": ["One of your choice"],
+		"startingGold": 5,
+		"feature": {
+			"name": "Discovery",
+			"description": "The quiet seclusion of your extended hermitage gave you access to a unique and powerful discovery. Its exact nature is up to you."
+		}
+	},
+	{
+		"id": 8,
+		"name": "Noble",
+		"skills": ["History", "Persuasion"],
+		"toolProficiencies": ["One gaming set"],
+		"languages": ["One of your choice"],
+		"startingGold": 25,
+		"feature": {
+			"name": "Position of Privilege",
+			"description": "Thanks to your noble birth, people are inclined to think the best of you. You are welcomed in high society, and commoners heed you."
+		}
+	},
+	{
+		"id": 9,
+		"name": "Outlander",
+		"skills": ["Athletics", "Survival"],
+		"toolProficiencies": ["One musical instrument"],
+		"languages": ["One of your choice"],
+		"startingGold": 10,
+		"feature": {
+			"name": "Wanderer",
+			"description": "You have an excellent memory for maps and geography, and you can always recall the general layout of terrain you have seen."
+		}
+	},
+	{
+		"id": 10,
+		"name": "Sage",
+		"skills": ["Arcana", "History"],
+		"toolProficiencies": [],
+		"languages": ["Two of your choice"],
+		"startingGold": 10,
+		"feature": {
+			"name": "Researcher",
+			"description": "When you attempt to learn or recall a piece of lore, if you do not know that information, you often know where and from whom you can obtain it."
+		}
+	},
+	{
+		"id": 11,
+		"name": "Sailor",
+		"skills": ["Athletics", "Perception"],
+		"toolProficiencies": ["Navigator's tools", "Vehicles (water)"],
+		"languages": [],
+		"startingGold": 10,
+		"feature": {
+			"name": "Ship's Passage",
+			"description": "When you need to, you can secure free passage on a sailing ship for yourself and your companions."
+		}
+	},
+	{
+		"id": 12,
+		"name": "Soldier",
+		"skills": ["Athletics", "Intimidation"],
+		"toolProficiencies": ["One gaming set", "Vehicles (land)"],
+		"languages": [],
+		"startingGold": 10,
+		"feature": {
+			"name": "Military Rank",
+			"description": "You have a military rank from your career in the army. Soldiers loyal to your former organization still recognize your authority."
+		}
+	},
+	{
+		"id": 13,
+		"name": "Urchin",
+		"skills": ["Sleight_of_Hand", "Stealth"],
+		"toolProficiencies": ["Disguise kit", "Thieves' tools"],
+		"languages": [],
+		"startingGold": 10,
+		"feature": {
+			"name": "City Secrets",
+			"description": "You know the secret patterns and flow to cities and can find passages through the urban sprawl that others would miss."
+		}
+	}
+]
