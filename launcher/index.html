@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RPG Paper Maker Launcher</title>
+  <style>
+    :root { color: #edf5f5; background: #10171d; font-family: system-ui, sans-serif; }
+    body { min-height: 100vh; margin: 0; background: radial-gradient(circle at top right, #1d6663, transparent 45%), #10171d; }
+    main { box-sizing: border-box; display: grid; grid-template-rows: 1fr auto; min-height: 100vh; padding: 54px; }
+    .brand { align-self: center; } .eyebrow { color: #77d7d1; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    h1 { margin: 12px 0; font-size: clamp(38px, 6vw, 68px); } p { color: #b6c8cd; font-size: 17px; }
+    .actions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    button { min-height: 112px; padding: 20px; color: #eefafa; text-align: left; background: rgb(15 29 35 / 82%); border: 1px solid #31525b; border-radius: 12px; cursor: pointer; }
+    button:hover { border-color: #70d8d1; background: #1b3d45; } button:disabled { cursor: wait; opacity: .65; }
+    .title { display: block; margin-bottom: 7px; font-size: 18px; font-weight: 700; } .copy, #status { color: #a9bcc0; font-size: 13px; }
+    #status { min-height: 20px; } @media (max-width: 720px) { main { padding: 28px; } .actions { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="brand"><div class="eyebrow">Game creation toolkit</div><h1>RPG Paper Maker</h1><p>Start the editor or manage available updates.</p><div id="status">Ready.</div></section>
+    <section class="actions">
+      <button id="launch"><span class="title">Launch editor</span><span class="copy">Open the RPG Paper Maker workspace.</span></button>
+      <button id="updates"><span class="title">Updates</span><span class="copy">View patch notes and install updates.</span></button>
+      <button id="exit"><span class="title">Exit</span><span class="copy">Close RPG Paper Maker.</span></button>
+    </section>
+  </main>
+  <script>
+    const status = document.getElementById('status');
+    const disable = () => document.querySelectorAll('button').forEach((button) => button.disabled = true);
+    document.getElementById('launch').onclick = async () => { disable(); status.textContent = 'Opening editor…'; await window.ipcRenderer.invoke('launch-editor'); };
+    document.getElementById('updates').onclick = async () => { disable(); status.textContent = 'Opening updates…'; await window.ipcRenderer.invoke('open-updater'); };
+    document.getElementById('exit').onclick = async () => { disable(); await window.ipcRenderer.invoke('quit-application'); };
+  </script>
+</body>
+</html>

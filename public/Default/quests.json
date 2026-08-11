@@ -1,0 +1,30 @@
+{
+	"quests": [
+		{
+			"id": 1,
+			"names": { "1": "The First Step" },
+			"description": { "id": -1, "names": { "1": "A journey begins." } },
+			"status": 1,
+			"iaa": true,
+			"objectives": [
+				{
+					"id": 1,
+					"ok": 0,
+					"tid": 1,
+					"q": 1,
+					"io": false,
+					"hil": false,
+					"description": { "id": -1, "names": { "1": "Defeat a Wooly." } }
+				}
+			],
+			"rewards": [
+				{
+					"id": 1,
+					"rk": 0,
+					"tid": 1,
+					"q": 50
+				}
+			]
+		}
+	]
+}

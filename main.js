@@ -61,6 +61,8 @@ const setSplashProgress = (text) => {
 };
 
 const runRPMEngine = async () => {
+	launcher?.close();
+	launcher = null;
 	updater?.close();
 	updater = null;
 	await createSplash();
@@ -291,8 +293,73 @@ let window;
 let game;
 let gameProcess;
 let updater;
+let launcher;
 let splash;
 let isReadyToClose = false;
+
+const UPDATE_REPOSITORY = 'ArkansasIo/game-enigne-paper-make-redsigen-';
+const UPDATE_REF = 'develop';
+const UPDATE_MANIFEST_URL = `https://raw.githubusercontent.com/${UPDATE_REPOSITORY}/${UPDATE_REF}/updates/update-manifest.json`;
+
+const compareVersions = (left, right) => {
+	const leftParts = String(left).split('.').map((part) => Number.parseInt(part, 10) || 0);
+	const rightParts = String(right).split('.').map((part) => Number.parseInt(part, 10) || 0);
+	for (let index = 0; index < Math.max(leftParts.length, rightParts.length); index++) {
+		if ((leftParts[index] ?? 0) !== (rightParts[index] ?? 0)) {
+			return (leftParts[index] ?? 0) - (rightParts[index] ?? 0);
+		}
+	}
+	return 0;
+};
+
+const getUpdateManifest = async () => {
+	try {
+		const response = await fetch(UPDATE_MANIFEST_URL, { cache: 'no-store' });
+		if (!response.ok) return null;
+		return await response.json();
+	} catch {
+		return null;
+	}
+};
+
+const runUpdater = async () => {
+	launcher?.close();
+	launcher = null;
+	updater = new BrowserWindow({
+		width: 760,
+		height: 560,
+		resizable: false,
+		webPreferences: {
+			nodeIntegration: false,
+			contextIsolation: true,
+			sandbox: false,
+			preload: path.join(__dirname, 'preload.js'),
+			additionalArguments: [`--appPath=${app.getAppPath()}`],
+		},
+		icon: appIconPath,
+	});
+	updater.removeMenu();
+	await updater.loadFile(path.join(__dirname, 'updater', 'patch.html'));
+};
+
+const runLauncher = async () => {
+	launcher = new BrowserWindow({
+		width: 900,
+		height: 600,
+		minWidth: 720,
+		minHeight: 500,
+		webPreferences: {
+			nodeIntegration: false,
+			contextIsolation: true,
+			sandbox: false,
+			preload: path.join(__dirname, 'preload.js'),
+			additionalArguments: [`--appPath=${app.getAppPath()}`],
+		},
+		icon: appIconPath,
+	});
+	launcher.removeMenu();
+	await launcher.loadFile(path.join(__dirname, 'launcher', 'index.html'));
+};
 
 const hasInternet = async () => {
 	const urls = ['https://www.google.com', 'https://www.baidu.com', 'https://www.bing.com', 'https://one.one.one.one'];
@@ -395,18 +462,30 @@ const displayErrorUpdater = (err) => {
 };
 
 const init = async () => {
-	// Check if dist was fully downloaded (sentinel file created at end of download)
-	const distPath = path.join(__dirname, 'dist');
-	const sentinelPath = path.join(__dirname, 'dist', '.complete');
-
-	const isEngineDownloaded = await exists(sentinelPath);
-	if (!isEngineDownloaded && (await exists(distPath))) {
-		await fs.rm(distPath, { recursive: true, force: true }).catch(() => {});
+	// Updates are disabled in this fork. The packaged dist directory is the
+	// application frontend, so it must never be treated as an interrupted
+	// updater download or deleted because it lacks the updater-only .complete
+	// marker.
+	const entryPoint = path.join(__dirname, 'dist', 'index.html');
+	if (!(await exists(entryPoint))) {
+		await runUpdater();
+		return;
 	}
 
-	// Updates are disabled in this fork: always run the engine directly.
-	await runRPMEngine();
+	await runLauncher();
 };
+
+ipcMain.handle('launch-editor', async () => {
+	await runRPMEngine();
+});
+
+ipcMain.handle('open-updater', async () => {
+	await runUpdater();
+});
+
+ipcMain.handle('quit-application', () => {
+	app.quit();
+});
 
 app.whenReady().then(async () => {
 	if (await ensureLinuxAngleBackend()) {

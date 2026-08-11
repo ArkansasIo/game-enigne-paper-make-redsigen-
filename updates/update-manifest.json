@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "latestVersion": "3.2.6",
+  "releaseNotes": [
+    "Updater redesigned to use the ArkansasIo game-engine repository as its update resource.",
+    "Updates are applied as explicit, versioned patch files instead of replacing the full installation."
+  ],
+  "patches": []
+}

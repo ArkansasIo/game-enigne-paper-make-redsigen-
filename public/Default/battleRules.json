@@ -1,0 +1,14 @@
+{
+	"rules": {
+		"damageFormula": "(user.attack * 2) - target.defense",
+		"hitRateFormula": "0.9",
+		"critChanceFormula": "0.05",
+		"critDamageMultiplierFormula": "1.5",
+		"expGainMultiplier": 1,
+		"currencyGainMultiplier": 1,
+		"fleeChance": 1,
+		"backAttackChance": 0,
+		"guardDamageReduction": 0.5,
+		"levelUpStatBonus": 10
+	}
+}

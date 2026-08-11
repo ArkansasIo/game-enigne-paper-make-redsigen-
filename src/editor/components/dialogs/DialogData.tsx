@@ -22,6 +22,8 @@ import PanelClasses from '../panels/data/PanelClasses';
 import PanelCommonSkillItem from '../panels/data/PanelCommonSkillItem';
 import PanelHeroes from '../panels/data/PanelHeroes';
 import PanelMonsters from '../panels/data/PanelMonsters';
+import PanelQuests from '../panels/data/PanelQuests';
+import PanelRecipes from '../panels/data/PanelRecipes';
 import PanelStatus from '../panels/data/PanelStatus';
 import PanelTilesets from '../panels/data/PanelTilesets';
 import PanelTroops from '../panels/data/PanelTroops';
@@ -31,9 +33,10 @@ import FooterCancelSaveClose from './footers/FooterCancelSaveClose';
 
 type Props = {
 	setIsOpen: (b: boolean) => void;
+	initialTab?: number;
 };
 
-function DialogData({ setIsOpen }: Props) {
+function DialogData({ setIsOpen, initialTab }: Props) {
 	const { t } = useTranslation();
 
 	const dispatch = useDispatch();
@@ -49,6 +52,8 @@ function DialogData({ setIsOpen }: Props) {
 	const panelAnimationsRef = useRef(null);
 	const panelStatusRef = useRef(null);
 	const panelTilesetsRef = useRef(null);
+	const panelQuestsRef = useRef(null);
+	const panelRecipesRef = useRef(null);
 
 	const handleCurrentIndexChanged = (index: number) => {
 		Project.current!.settings.lastTabIndexData = index;
@@ -89,6 +94,12 @@ function DialogData({ setIsOpen }: Props) {
 		if (panelTilesetsRef.current) {
 			await Project.current!.tilesets.save();
 			await Project.current!.pictures.save();
+		}
+		if (panelQuestsRef.current) {
+			await Project.current!.quests.save();
+		}
+		if (panelRecipesRef.current) {
+			await Project.current!.recipes.save();
 		}
 		await Project.current!.settings.save();
 		dispatch(setNeedsReloadMap());
@@ -135,6 +146,12 @@ function DialogData({ setIsOpen }: Props) {
 			await Project.current!.tilesets.load();
 			await Project.current!.pictures.load();
 		}
+		if (panelQuestsRef.current) {
+			await Project.current!.quests.load();
+		}
+		if (panelRecipesRef.current) {
+			await Project.current!.recipes.load();
+		}
 		await Project.current!.settings.save();
 		setIsOpen(false);
 	};
@@ -161,6 +178,8 @@ function DialogData({ setIsOpen }: Props) {
 					t('animations'),
 					t('status'),
 					t('tilesets'),
+					t('quests'),
+					t('recipes'),
 				])}
 				contents={[
 					<PanelClasses key={0} ref={panelClassesRef} />,
@@ -174,8 +193,10 @@ function DialogData({ setIsOpen }: Props) {
 					<PanelAnimations key={8} ref={panelAnimationsRef} />,
 					<PanelStatus key={9} ref={panelStatusRef} />,
 					<PanelTilesets key={10} ref={panelTilesetsRef} />,
+					<PanelQuests key={11} ref={panelQuestsRef} />,
+					<PanelRecipes key={12} ref={panelRecipesRef} />,
 				]}
-				defaultIndex={Project.current!.settings.lastTabIndexData}
+				defaultIndex={initialTab ?? Project.current!.settings.lastTabIndexData}
 				onCurrentIndexChanged={handleCurrentIndexChanged}
 				padding
 				lazyLoadingContent

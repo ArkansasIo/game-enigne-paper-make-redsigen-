@@ -92,6 +92,10 @@ class Paths {
 	public static readonly FILE_CLASSES = 'classes.json';
 	public static readonly FILE_TILESETS = 'tilesets.json';
 	public static readonly FILE_SPECIAL_ELEMENTS = 'specialElements.json';
+	public static readonly FILE_QUESTS = 'quests.json';
+	public static readonly FILE_RECIPES = 'recipes.json';
+	public static readonly FILE_BATTLE_RULES = 'battleRules.json';
+	public static readonly FILE_MAP_GEN_PRESETS = 'mapGenPresets.json';
 	public static readonly FILE_VARIABLES = 'variables.json';
 	public static readonly FILE_SETTINGS = 'settings.json';
 	public static readonly FILE_SETTINGS_GAME = 'settings-game.json';
@@ -138,6 +142,10 @@ class Paths {
 		Paths.FILE_CLASSES,
 		Paths.FILE_TILESETS,
 		Paths.FILE_SPECIAL_ELEMENTS,
+		Paths.FILE_QUESTS,
+		Paths.FILE_RECIPES,
+		Paths.FILE_BATTLE_RULES,
+		Paths.FILE_MAP_GEN_PRESETS,
 		Paths.FILE_VARIABLES,
 		Paths.FILE_SETTINGS,
 		Paths.FILE_DLCS,

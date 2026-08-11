@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RPG Paper Maker Update</title>
+  <style>
+    body { margin: 0; padding: 28px; color: #e6edf3; background: #161b22; font: 15px system-ui, sans-serif; }
+    main { display: grid; gap: 18px; }
+    h1, h2, p { margin: 0; } h1 { font-size: 24px; } h2 { font-size: 16px; }
+    .card { padding: 18px; border: 1px solid #3d444d; border-radius: 10px; background: #0d1117; }
+    .versions { display: flex; gap: 24px; color: #b1bac4; } .versions strong { display: block; color: #fff; font-size: 18px; }
+    #notes { white-space: pre-wrap; line-height: 1.5; } #status { color: #b1bac4; min-height: 20px; }
+    button { justify-self: start; padding: 10px 16px; color: white; background: #218584; border: 0; border-radius: 6px; cursor: pointer; }
+    button:disabled { cursor: wait; background: #484f58; } a { color: #58a6ff; }
+  </style>
+</head>
+<body>
+  <main>
+    <div><h1>RPG Paper Maker update</h1><p id="status">Checking update information…</p></div>
+    <section class="card versions"><div>Installed<strong id="currentVersion">Unknown</strong></div><div>Available<strong id="latestVersion">Unknown</strong></div></section>
+    <section class="card"><h2>What’s new</h2><p id="notes">No release notes are available.</p></section>
+    <button id="apply" disabled>Apply update</button>
+    <a id="repository" target="_blank" rel="noreferrer">View update source</a>
+  </main>
+  <script>
+    const source = { repository: 'ArkansasIo/game-enigne-paper-make-redsigen-', ref: 'develop' };
+    const rawBase = `https://raw.githubusercontent.com/${source.repository}/${source.ref}/`;
+    const manifestURL = `${rawBase}updates/update-manifest.json`;
+    const appPath = window.env.appPath;
+    const status = document.getElementById('status');
+    const apply = document.getElementById('apply');
+    document.getElementById('repository').href = `https://github.com/${source.repository}`;
+    let manifest;
+    let currentVersion = '0.0.0';
+
+    const compare = (a, b) => {
+      const aa = String(a).split('.').map((v) => Number.parseInt(v, 10) || 0);
+      const bb = String(b).split('.').map((v) => Number.parseInt(v, 10) || 0);
+      for (let i = 0; i < Math.max(aa.length, bb.length); i++) if ((aa[i] || 0) !== (bb[i] || 0)) return (aa[i] || 0) - (bb[i] || 0);
+      return 0;
+    };
+    const patchFiles = () => (manifest.patches || [])
+      .filter((patch) => compare(patch.version, currentVersion) > 0 && compare(patch.version, manifest.latestVersion) <= 0)
+      .flatMap((patch) => patch.files || []);
+
+    async function load() {
+      currentVersion = (await window.ipcRenderer.invoke('read-file', `${appPath}/dist/version`) || '0.0.0').trim();
+      document.getElementById('currentVersion').textContent = currentVersion;
+      const response = await fetch(manifestURL, { cache: 'no-store' });
+      if (!response.ok) throw new Error(`Unable to load update information (HTTP ${response.status}).`);
+      manifest = await response.json();
+      if (!manifest.latestVersion || !Array.isArray(manifest.patches)) throw new Error('The update manifest is invalid.');
+      document.getElementById('latestVersion').textContent = manifest.latestVersion;
+      document.getElementById('notes').textContent = (manifest.releaseNotes || []).join('\n') || 'No release notes are available.';
+      if (compare(manifest.latestVersion, currentVersion) <= 0) { status.textContent = 'RPG Paper Maker is up to date.'; return; }
+      const files = patchFiles();
+      if (!files.length) throw new Error('An update is available, but no patch files were published for this version.');
+      status.textContent = `${files.length} file${files.length === 1 ? '' : 's'} ready to update.`;
+      apply.disabled = false;
+    }
+    apply.addEventListener('click', async () => {
+      apply.disabled = true;
+      try {
+        const files = patchFiles();
+        for (let i = 0; i < files.length; i++) {
+          const file = files[i];
+          status.textContent = `Downloading ${i + 1}/${files.length}: ${file.destination}`;
+          const response = await fetch(`${rawBase}${file.source}`, { cache: 'no-store' });
+          if (!response.ok) throw new Error(`Could not download ${file.source} (HTTP ${response.status}).`);
+          await window.ipcRenderer.invoke('create-file', `${appPath}/${file.destination}`, new Uint8Array(await response.arrayBuffer()));
+        }
+        await window.ipcRenderer.invoke('create-file', `${appPath}/dist/version`, manifest.latestVersion);
+        status.textContent = 'Update complete. Restarting RPG Paper Maker…';
+        await window.ipcRenderer.invoke('show-dialog-confirm-run-engine');
+      } catch (error) { status.textContent = `Update failed: ${error.message || error}`; apply.disabled = false; }
+    });
+    load().catch((error) => { status.textContent = `Update check failed: ${error.message || error}`; });
+  </script>
+</body>
+</html>

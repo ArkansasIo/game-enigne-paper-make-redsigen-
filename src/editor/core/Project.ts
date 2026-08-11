@@ -54,6 +54,10 @@ class Project {
 	public troops = new Data.Troops();
 	public battleSystem = new Data.BattleSystem();
 	public titleScreenGameOver = new Data.TitleScreenGameOver();
+	public quests = new Data.Quests();
+	public recipes = new Data.Recipes();
+	public battleRules = new Data.BattleRulesData();
+	public mapGenPresets = new Data.MapGenPresets();
 	public scripts = new Data.Scripts();
 	public dlcs = new Data.DLCs();
 	public currentMapObjectStates: Node[] = [];
@@ -232,6 +236,10 @@ class Project {
 		await this.troops.load();
 		await this.battleSystem.load();
 		await this.titleScreenGameOver.load();
+		await this.quests.load();
+		await this.recipes.load();
+		await this.battleRules.load();
+		await this.mapGenPresets.load();
 		await this.scripts.load();
 		await this.dlcs.load();
 		this.loaded = true;
@@ -265,6 +273,10 @@ class Project {
 			this.troops.save(),
 			this.battleSystem.save(),
 			this.titleScreenGameOver.save(),
+			this.quests.save(),
+			this.recipes.save(),
+			this.battleRules.save(),
+			this.mapGenPresets.save(),
 			this.scripts.save(),
 			this.dlcs.save(),
 		]);

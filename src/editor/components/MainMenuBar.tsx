@@ -27,7 +27,7 @@ import {
 import { BiCube, BiExport, BiImport, BiPyramid, BiSave } from 'react-icons/bi';
 import { BsClipboardData, BsDatabase, BsMusicNote, BsPlay } from 'react-icons/bs';
 import { FaArrowDown, FaArrowsAlt, FaArrowUp, FaBackward, FaPlug, FaRegKeyboard } from 'react-icons/fa';
-import { FiMap } from 'react-icons/fi';
+import { FiCode, FiMap } from 'react-icons/fi';
 import { IoIosRedo, IoIosUndo, IoMdArrowBack } from 'react-icons/io';
 import { LuFolders, LuLanguages, LuMountain, LuRocket, LuSaveAll } from 'react-icons/lu';
 import { MdAutoAwesomeMosaic, MdClose, MdOutlineAddchart, MdOutlineSmartToy, MdOutlineWallpaper } from 'react-icons/md';
@@ -118,6 +118,7 @@ import Button from './Button';
 import Dialog from './dialogs/Dialog';
 import DialogAbout from './dialogs/DialogAbout';
 import DialogAIAssistant from './dialogs/DialogAIAssistant';
+import DialogBattleRules from './dialogs/DialogBattleRules';
 import DialogChangeLanguage from './dialogs/DialogChangeLanguage';
 import DialogBlueprint from './dialogs/DialogBlueprint';
 import DialogCollisions from './dialogs/DialogCollisions';
@@ -130,11 +131,13 @@ import DialogGeneralOptions from './dialogs/DialogGeneralOptions';
 import DialogKeyboardControls from './dialogs/DialogKeyboardControls';
 import DialogLanguages from './dialogs/DialogLanguages';
 import DialogManageBackups from './dialogs/DialogManageBackups';
+import DialogMapGenPresets from './dialogs/DialogMapGenPresets';
 import DialogNewProject from './dialogs/DialogNewProject';
 import DialogObjects3DPreview from './dialogs/DialogObjects3DPreview';
 import DialogPathLocation, { LOCATION_TYPE } from './dialogs/DialogPathLocation';
 import DialogPictures from './dialogs/DialogPictures';
 import DialogPlugins from './dialogs/DialogPlugins';
+import DialogSourceEditor from './dialogs/DialogSourceEditor';
 import DialogShapes from './dialogs/DialogShapes';
 import DialogSongs from './dialogs/DialogSongs';
 import DialogSystems from './dialogs/DialogSystems';
@@ -176,12 +179,16 @@ enum DIALOG_TYPE {
 	ABOUT,
 	BLUEPRINT,
 	AI_ASSISTANT,
+	BATTLE_RULES,
+	MAP_GEN_PRESETS,
+	SOURCE_EDITOR,
 }
 
 function MainMenuBar() {
 	const { t } = useTranslation();
 
 	const [dialogType, setDialogType] = useState<DIALOG_TYPE | null>(null);
+	const [dataInitialTab, setDataInitialTab] = useState<number | undefined>(undefined);
 	const [isDialogWarningProjectVersionOpen, setIsDialogWarningProjectVersionOpen] = useState(false);
 	const [warningLocalPluginsMessage, setWarningLocalPluginsMessage] = useStateString();
 	const [warningVersionMessage, setWarningVersionMessage] = useStateString();
@@ -237,6 +244,7 @@ function MainMenuBar() {
 	const handleSetIsDialogOpen = (b: boolean) => {
 		if (!b) {
 			setDialogType(null);
+			setDataInitialTab(undefined);
 		}
 	};
 
@@ -679,6 +687,8 @@ function MainMenuBar() {
 
 	const handlePluginsManager = async () => setDialogType(DIALOG_TYPE.PLUGINS);
 
+	const handleSourceEditor = async () => setDialogType(DIALOG_TYPE.SOURCE_EDITOR);
+
 	const handleDLCsManager = async () => setDialogType(DIALOG_TYPE.DLCS);
 
 	const handlePicturesManager = async () => setDialogType(DIALOG_TYPE.PICTURES);
@@ -756,6 +766,19 @@ function MainMenuBar() {
 
 	const handleAIAssistant = async () => {
 		setDialogType(DIALOG_TYPE.AI_ASSISTANT);
+	};
+
+	const handleBattleRules = async () => {
+		setDialogType(DIALOG_TYPE.BATTLE_RULES);
+	};
+
+	const handleMapGenPresets = async () => {
+		setDialogType(DIALOG_TYPE.MAP_GEN_PRESETS);
+	};
+
+	const handleDataManagerTab = async (index: number) => {
+		setDataInitialTab(index);
+		setDialogType(DIALOG_TYPE.DATA);
 	};
 
 	const handleMinimize = async () => {
@@ -1016,6 +1039,12 @@ function MainMenuBar() {
 					disabled: !isProjectOpened,
 				},
 				{
+					title: 'Source Code Editor...',
+					icon: <FiCode />,
+					onClick: handleSourceEditor,
+					disabled: !isProjectOpened,
+				},
+				{
 					title: `${t('pictures.manager')}...`,
 					icon: <AiOutlinePicture />,
 					onClick: handlePicturesManager,
@@ -1074,6 +1103,33 @@ function MainMenuBar() {
 					icon: <MdOutlineAddchart />,
 					onClick: handleBlueprint,
 					disabled: !isProjectOpened,
+				},
+				{
+					title: `${t('rpg.engine.systems')}...`,
+					icon: <MdOutlineSmartToy />,
+					disabled: !isProjectOpened,
+					children: [
+						{
+							title: `${t('quests')}...`,
+							icon: <BsClipboardData />,
+							onClick: () => handleDataManagerTab(11),
+						},
+						{
+							title: `${t('recipes')}...`,
+							icon: <BsDatabase />,
+							onClick: () => handleDataManagerTab(12),
+						},
+						{
+							title: `${t('battle.rules')}...`,
+							icon: <TbNumbers />,
+							onClick: handleBattleRules,
+						},
+						{
+							title: `${t('map.gen.presets')}...`,
+							icon: <FiMap />,
+							onClick: handleMapGenPresets,
+						},
+					],
 				},
 			],
 		},
@@ -1277,7 +1333,7 @@ function MainMenuBar() {
 			case DIALOG_TYPE.DEPLOY:
 				return <DialogDeploy setIsOpen={handleSetIsDialogOpen} />;
 			case DIALOG_TYPE.DATA:
-				return <DialogData setIsOpen={handleSetIsDialogOpen} />;
+				return <DialogData setIsOpen={handleSetIsDialogOpen} initialTab={dataInitialTab} />;
 			case DIALOG_TYPE.SYSTEMS:
 				return <DialogSystems setIsOpen={handleSetIsDialogOpen} />;
 			case DIALOG_TYPE.VARIABLES:
@@ -1324,6 +1380,12 @@ function MainMenuBar() {
 				return <DialogBlueprint setIsOpen={handleSetIsDialogOpen} />;
 			case DIALOG_TYPE.AI_ASSISTANT:
 				return <DialogAIAssistant setIsOpen={handleSetIsDialogOpen} />;
+			case DIALOG_TYPE.BATTLE_RULES:
+				return <DialogBattleRules setIsOpen={handleSetIsDialogOpen} />;
+			case DIALOG_TYPE.MAP_GEN_PRESETS:
+				return <DialogMapGenPresets setIsOpen={handleSetIsDialogOpen} />;
+			case DIALOG_TYPE.SOURCE_EDITOR:
+				return <DialogSourceEditor setIsOpen={handleSetIsDialogOpen} />;
 			default:
 				return null;
 		}

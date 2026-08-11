@@ -1,0 +1,20 @@
+{
+	"recipes": [
+		{
+			"id": 1,
+			"names": { "1": "Healing Potion" },
+			"ck": 1,
+			"rid": 1,
+			"rq": 1,
+			"iub": true,
+			"description": { "id": -1, "names": { "1": "" } },
+			"ingredients": [
+				{
+					"id": 1,
+					"iid": 1,
+					"q": 1
+				}
+			]
+		}
+	]
+}

@@ -13,7 +13,7 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineFileAdd, AiOutlineFolderOpen } from 'react-icons/ai';
 import { BiImport } from 'react-icons/bi';
-import { FaDiscord, FaHandsHelping, FaRegPlayCircle } from 'react-icons/fa';
+import { FaHandsHelping } from 'react-icons/fa';
 import { MdOutlineAddchart } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
 import { BUTTON_TYPE, Constants } from '../../common';
@@ -85,7 +85,6 @@ function PanelNoProject() {
 	const projects = useSelector((state: RootState) => state.projects.list);
 
 	const [changelogHtml, setChangelogHtml] = useState<string | null>(null);
-	const [youtubeVideoId, setYoutubeVideoId] = useState<string | null>(null);
 
 	const handleNewProject = () => {
 		dispatch(triggerNewProject(true));
@@ -128,27 +127,9 @@ function PanelNoProject() {
 		}
 	};
 
-	const fetchYoutubeVideo = async () => {
-		try {
-			const response = await fetch(
-				'https://raw.githubusercontent.com/RPG-Paper-Maker/RPG-Paper-Maker/refs/heads/develop/youtube.txt',
-				{ cache: 'no-store' },
-			);
-			if (response.ok) {
-				const text = (await response.text()).trim();
-				const match = text.match(/(?:v=|youtu\.be\/)([A-Za-z0-9_-]{11})/);
-				const id = match ? match[1] : text;
-				if (id) setYoutubeVideoId(id);
-			}
-		} catch {
-			// No internet: show nothing
-		}
-	};
-
 	useEffect(() => {
 		Manager.GL.mainContext.remove();
 		void fetchChangelog();
-		void fetchYoutubeVideo();
 	}, []);
 
 	return (
@@ -178,15 +159,6 @@ function PanelNoProject() {
 						<MdOutlineAddchart />
 						{t('dlcs')}
 					</Button>
-					<Button
-						icon={<FaDiscord />}
-						big
-						onClick={async () => {
-							await openWebsite('https://discord.com/invite/QncEnCE');
-						}}
-					>
-						{t('join.discord')}
-					</Button>
 					<Button buttonType={BUTTON_TYPE.PATREON} big onClick={handleContribute}>
 						<FaHandsHelping />
 						{t('contribute')}
@@ -208,24 +180,6 @@ function PanelNoProject() {
 								className='changelogPreviewContent'
 								dangerouslySetInnerHTML={{ __html: changelogHtml }}
 							/>
-						</div>
-					)}
-					{youtubeVideoId !== null && (
-						<div className='youtubePreview'>
-							<div className='youtubePreviewTitle'>{t('latest.video')}</div>
-							<div
-								className='youtubePreviewThumbnail'
-								onClick={async () =>
-									await openWebsite(`https://www.youtube.com/watch?v=${youtubeVideoId}`)
-								}
-							>
-								<img
-									className='youtubePreviewFrame'
-									src={`https://img.youtube.com/vi/${youtubeVideoId}/maxresdefault.jpg`}
-									alt='Latest video'
-								/>
-								<FaRegPlayCircle className='youtubePlayIcon' />
-							</div>
 						</div>
 					)}
 				</Flex>

@@ -18,6 +18,11 @@ jobs:
         steps:
             - uses: actions/checkout@v5
 
+            - name: Build Electron frontend
+              run: |
+                  npm ci
+                  npm run build-quick-electron
+
             - name: Get Electron version
               id: electron
               run: |
@@ -42,6 +47,7 @@ jobs:
                     rm -f "${RESOURCES}/default_app.asar"
                     mkdir -p "${RESOURCES}/app"
                     cp main.js package.json preload.js "${RESOURCES}/app/"
+                    cp -r dist "${RESOURCES}/app/dist"
                     cp -r updater "${RESOURCES}/app/updater"
                     mkdir "${RESOURCES}/app/DLCs"
                   done
@@ -111,6 +117,12 @@ jobs:
         steps:
             - uses: actions/checkout@v5
 
+            - name: Build Electron frontend
+              shell: bash
+              run: |
+                  npm ci
+                  npm run build-quick-electron
+
             - name: Get Electron version
               id: electron
               shell: bash
@@ -136,6 +148,7 @@ jobs:
                   rm -f "${RESOURCES}/default_app.asar"
                   mkdir -p "${RESOURCES}/app"
                   cp main.js package.json preload.js "${RESOURCES}/app/"
+                  cp -r dist "${RESOURCES}/app/dist"
                   cp -r updater "${RESOURCES}/app/updater"
                   mkdir "${RESOURCES}/app/DLCs"
 

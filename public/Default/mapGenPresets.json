@@ -1,0 +1,21 @@
+{
+	"mapGenPresets": [
+		{
+			"id": 1,
+			"names": { "1": "Default" },
+			"description": { "id": -1, "names": { "1": "" } },
+			"width": 20,
+			"length": 20,
+			"height": 1,
+			"depth": 2,
+			"seed": 1,
+			"terrain": 0,
+			"density": 0.3,
+			"floorAutotileID": 1,
+			"wallAutotileID": 1,
+			"tilesetID": 1,
+			"generateRooms": false,
+			"randomBattlesEnabled": true
+		}
+	]
+}
