@@ -1,0 +1,683 @@
+{
+	"author": "RPG-Engine",
+	"category": 3,
+	"commands": [
+		{
+			"name": "New game",
+			"id": 1,
+			"description": "Create a fresh RPGEngine world and character (procedural overworld with towns, dungeons, shrines and the Tower of Ascension).",
+			"defaultParameters": [
+				{
+					"name": "seed",
+					"id": -1,
+					"description": "World seed. -1 picks a random seed.",
+					"defaultValue": { "k": 12, "v": -1 }
+				},
+				{
+					"name": "playerName",
+					"id": -1,
+					"description": "Name of the player character.",
+					"defaultValue": { "k": 8, "v": "Hero" }
+				},
+				{
+					"name": "classId",
+					"id": -1,
+					"description": "Class id: warrior, ranger, mage, cleric, rogue, paladin, bard or dw-hero.",
+					"defaultValue": { "k": 8, "v": "warrior" }
+				},
+				{
+					"name": "mode",
+					"id": -1,
+					"description": "Game mode: classic or dw (Dragon Warrior / Alefgard).",
+					"defaultValue": { "k": 8, "v": "classic" }
+				}
+			]
+		},
+		{
+			"name": "Save game",
+			"id": 2,
+			"description": "Save the current RPGEngine game to a slot (stored in browser localStorage).",
+			"defaultParameters": [
+				{
+					"name": "slot",
+					"id": -1,
+					"description": "Save slot name.",
+					"defaultValue": { "k": 8, "v": "slot-1" }
+				}
+			]
+		},
+		{
+			"name": "Load game",
+			"id": 3,
+			"description": "Load an RPGEngine game from a slot.",
+			"defaultParameters": [
+				{
+					"name": "slot",
+					"id": -1,
+					"description": "Save slot name.",
+					"defaultValue": { "k": 8, "v": "slot-1" }
+				}
+			]
+		},
+		{
+			"name": "Delete slot",
+			"id": 4,
+			"description": "Permanently delete an RPGEngine save slot.",
+			"defaultParameters": [
+				{
+					"name": "slot",
+					"id": -1,
+					"description": "Save slot name.",
+					"defaultValue": { "k": 8, "v": "slot-1" }
+				}
+			]
+		},
+		{
+			"name": "Slot exists?",
+			"id": 5,
+			"description": "Store 1 in a variable if the save slot exists, 0 otherwise.",
+			"defaultParameters": [
+				{
+					"name": "slot",
+					"id": -1,
+					"description": "Save slot name.",
+					"defaultValue": { "k": 8, "v": "slot-1" }
+				},
+				{
+					"name": "variable",
+					"id": -1,
+					"description": "Variable ID to store the result.",
+					"defaultValue": { "k": 12, "v": 1 }
+				}
+			]
+		},
+		{
+			"name": "Move",
+			"id": 6,
+			"description": "Move the engine hero one tile. Wild encounters are resolved automatically as battles.",
+			"defaultParameters": [
+				{
+					"name": "direction",
+					"id": -1,
+					"description": "Direction: north, south, east or west.",
+					"defaultValue": { "k": 8, "v": "north" }
+				}
+			]
+		},
+		{
+			"name": "Position to variables",
+			"id": 7,
+			"description": "Store the engine hero's current tile coordinates into two variables.",
+			"defaultParameters": [
+				{
+					"name": "xVar",
+					"id": -1,
+					"description": "Variable ID for the X coordinate.",
+					"defaultValue": { "k": 12, "v": 1 }
+				},
+				{
+					"name": "yVar",
+					"id": -1,
+					"description": "Variable ID for the Y coordinate.",
+					"defaultValue": { "k": 12, "v": 2 }
+				}
+			]
+		},
+		{
+			"name": "Enter dungeon",
+			"id": 8,
+			"description": "Enter the procedural dungeon at the given feature index (0 = first dungeon).",
+			"defaultParameters": [
+				{
+					"name": "dungeonIndex",
+					"id": -1,
+					"description": "Index of the dungeon feature to enter (0-based).",
+					"defaultValue": { "k": 12, "v": 0 }
+				}
+			]
+		},
+		{
+			"name": "Enter tower",
+			"id": 9,
+			"description": "Enter the 100-floor Tower of Ascension (sealed until level 10).",
+			"defaultParameters": []
+		},
+		{
+			"name": "Descend stairs",
+			"id": 10,
+			"description": "Descend to the next dungeon floor.",
+			"defaultParameters": []
+		},
+		{
+			"name": "Ascend stairs",
+			"id": 11,
+			"description": "Ascend to the previous dungeon floor (or exit to the surface on floor 1).",
+			"defaultParameters": []
+		},
+		{
+			"name": "Tower next floor",
+			"id": 12,
+			"description": "Climb to the next tower floor.",
+			"defaultParameters": []
+		},
+		{
+			"name": "Tower prev floor",
+			"id": 13,
+			"description": "Descend to the previous tower floor (or exit on floor 1).",
+			"defaultParameters": []
+		},
+		{
+			"name": "Interact",
+			"id": 14,
+			"description": "Interact with the current tile: open chests, pray at shrines, talk to towns.",
+			"defaultParameters": []
+		},
+		{
+			"name": "Generate world",
+			"id": 15,
+			"description": "Regenerate the procedural overworld with the given feature counts.",
+			"defaultParameters": [
+				{
+					"name": "seed",
+					"id": -1,
+					"description": "World seed. -1 picks a random seed.",
+					"defaultValue": { "k": 12, "v": -1 }
+				},
+				{
+					"name": "townCount",
+					"id": -1,
+					"description": "Number of towns.",
+					"defaultValue": { "k": 12, "v": 3 }
+				},
+				{
+					"name": "dungeonCount",
+					"id": -1,
+					"description": "Number of dungeons.",
+					"defaultValue": { "k": 12, "v": 3 }
+				},
+				{
+					"name": "towerCount",
+					"id": -1,
+					"description": "Number of towers.",
+					"defaultValue": { "k": 12, "v": 1 }
+				},
+				{
+					"name": "shrineCount",
+					"id": -1,
+					"description": "Number of shrines.",
+					"defaultValue": { "k": 12, "v": 2 }
+				}
+			]
+		},
+		{
+			"name": "Run battle",
+			"id": 16,
+			"description": "Run an automatic battle against the given enemies. Results are stored in variables.",
+			"defaultParameters": [
+				{
+					"name": "enemies",
+					"id": -1,
+					"description": "Comma-separated enemy ids, e.g. rat, goblin.",
+					"defaultValue": { "k": 8, "v": "rat" }
+				},
+				{
+					"name": "victoryVar",
+					"id": -1,
+					"description": "Variable ID for the result (1 = victory, 0 = defeat/fled).",
+					"defaultValue": { "k": 12, "v": 1 }
+				},
+				{
+					"name": "xpVar",
+					"id": -1,
+					"description": "Variable ID for XP earned.",
+					"defaultValue": { "k": 12, "v": 2 }
+				},
+				{
+					"name": "goldVar",
+					"id": -1,
+					"description": "Variable ID for gold earned.",
+					"defaultValue": { "k": 12, "v": 3 }
+				}
+			]
+		},
+		{
+			"name": "Add XP",
+			"id": 17,
+			"description": "Add experience points to the player and handle level ups and milestones.",
+			"defaultParameters": [
+				{
+					"name": "amount",
+					"id": -1,
+					"description": "Amount of XP to add.",
+					"defaultValue": { "k": 12, "v": 50 }
+				}
+			]
+		},
+		{
+			"name": "Learn skill",
+			"id": 18,
+			"description": "Teach the player a skill (if they meet the requirements).",
+			"defaultParameters": [
+				{
+					"name": "skillId",
+					"id": -1,
+					"description": "Skill id, e.g. power-strike, fireball, heal, backstab.",
+					"defaultValue": { "k": 8, "v": "power-strike" }
+				}
+			]
+		},
+		{
+			"name": "Spend stat point",
+			"id": 19,
+			"description": "Spend one stat point on a stat.",
+			"defaultParameters": [
+				{
+					"name": "stat",
+					"id": -1,
+					"description": "Stat: strength, dexterity, constitution, intelligence, wisdom, charisma or luck.",
+					"defaultValue": { "k": 8, "v": "strength" }
+				}
+			]
+		},
+		{
+			"name": "Status to variables",
+			"id": 20,
+			"description": "Store HP, max HP, MP, max MP, level, gold, XP and stat points into eight variables.",
+			"defaultParameters": [
+				{
+					"name": "hpVar",
+					"id": -1,
+					"description": "Variable ID for HP.",
+					"defaultValue": { "k": 12, "v": 1 }
+				},
+				{
+					"name": "maxHpVar",
+					"id": -1,
+					"description": "Variable ID for max HP.",
+					"defaultValue": { "k": 12, "v": 2 }
+				},
+				{
+					"name": "mpVar",
+					"id": -1,
+					"description": "Variable ID for MP.",
+					"defaultValue": { "k": 12, "v": 3 }
+				},
+				{
+					"name": "maxMpVar",
+					"id": -1,
+					"description": "Variable ID for max MP.",
+					"defaultValue": { "k": 12, "v": 4 }
+				},
+				{
+					"name": "levelVar",
+					"id": -1,
+					"description": "Variable ID for level.",
+					"defaultValue": { "k": 12, "v": 5 }
+				},
+				{
+					"name": "goldVar",
+					"id": -1,
+					"description": "Variable ID for gold.",
+					"defaultValue": { "k": 12, "v": 6 }
+				},
+				{
+					"name": "xpVar",
+					"id": -1,
+					"description": "Variable ID for XP.",
+					"defaultValue": { "k": 12, "v": 7 }
+				},
+				{
+					"name": "statPointsVar",
+					"id": -1,
+					"description": "Variable ID for unspent stat points.",
+					"defaultValue": { "k": 12, "v": 8 }
+				}
+			]
+		},
+		{
+			"name": "Give item",
+			"id": 21,
+			"description": "Give items to the player's inventory.",
+			"defaultParameters": [
+				{
+					"name": "itemId",
+					"id": -1,
+					"description": "Item id, e.g. healing-potion, iron-sword, chainmail, torch, ration.",
+					"defaultValue": { "k": 8, "v": "healing-potion" }
+				},
+				{
+					"name": "count",
+					"id": -1,
+					"description": "Number of items to give.",
+					"defaultValue": { "k": 12, "v": 1 }
+				}
+			]
+		},
+		{
+			"name": "Remove item",
+			"id": 22,
+			"description": "Remove items from the player's inventory.",
+			"defaultParameters": [
+				{
+					"name": "itemId",
+					"id": -1,
+					"description": "Item id to remove.",
+					"defaultValue": { "k": 8, "v": "healing-potion" }
+				},
+				{
+					"name": "count",
+					"id": -1,
+					"description": "Number of items to remove.",
+					"defaultValue": { "k": 12, "v": 1 }
+				}
+			]
+		},
+		{
+			"name": "Use item",
+			"id": 23,
+			"description": "Use a consumable item (heals, cures, or DW-mode items like torch, fairy water, wing).",
+			"defaultParameters": [
+				{
+					"name": "itemId",
+					"id": -1,
+					"description": "Item id to use.",
+					"defaultValue": { "k": 8, "v": "healing-potion" }
+				}
+			]
+		},
+		{
+			"name": "Item count to variable",
+			"id": 24,
+			"description": "Store how many of an item the player has into a variable.",
+			"defaultParameters": [
+				{
+					"name": "itemId",
+					"id": -1,
+					"description": "Item id to count.",
+					"defaultValue": { "k": 8, "v": "healing-potion" }
+				},
+				{
+					"name": "variable",
+					"id": -1,
+					"description": "Variable ID to store the count.",
+					"defaultValue": { "k": 12, "v": 1 }
+				}
+			]
+		},
+		{
+			"name": "Craft",
+			"id": 25,
+			"description": "Craft an item from a recipe at a station.",
+			"defaultParameters": [
+				{
+					"name": "recipeId",
+					"id": -1,
+					"description": "Recipe id, e.g. craft-healing-potion, forge-iron-sword, cook-ration.",
+					"defaultValue": { "k": 8, "v": "craft-healing-potion" }
+				},
+				{
+					"name": "station",
+					"id": -1,
+					"description": "Station: forge, campfire or alchemy.",
+					"defaultValue": { "k": 8, "v": "alchemy" }
+				}
+			]
+		},
+		{
+			"name": "Equip item",
+			"id": 26,
+			"description": "Equip an item from the inventory on the correct slot.",
+			"defaultParameters": [
+				{
+					"name": "itemId",
+					"id": -1,
+					"description": "Item id to equip, e.g. iron-sword, chainmail.",
+					"defaultValue": { "k": 8, "v": "iron-sword" }
+				}
+			]
+		},
+		{
+			"name": "Unequip",
+			"id": 27,
+			"description": "Unequip the item in the given slot.",
+			"defaultParameters": [
+				{
+					"name": "slot",
+					"id": -1,
+					"description": "Slot: weapon, shield, armor, helmet, accessory or offhand.",
+					"defaultValue": { "k": 8, "v": "weapon" }
+				}
+			]
+		},
+		{
+			"name": "Buy",
+			"id": 28,
+			"description": "Buy an item from an NPC shop (requires the NPC to sell it).",
+			"defaultParameters": [
+				{
+					"name": "itemId",
+					"id": -1,
+					"description": "Item id to buy.",
+					"defaultValue": { "k": 8, "v": "healing-potion" }
+				},
+				{
+					"name": "npcId",
+					"id": -1,
+					"description": "NPC id, e.g. merchant, blacksmith, alchemist.",
+					"defaultValue": { "k": 8, "v": "merchant" }
+				}
+			]
+		},
+		{
+			"name": "Sell",
+			"id": 29,
+			"description": "Sell items from the inventory for gold.",
+			"defaultParameters": [
+				{
+					"name": "itemId",
+					"id": -1,
+					"description": "Item id to sell.",
+					"defaultValue": { "k": 8, "v": "healing-potion" }
+				},
+				{
+					"name": "count",
+					"id": -1,
+					"description": "Maximum number to sell.",
+					"defaultValue": { "k": 12, "v": 1 }
+				}
+			]
+		},
+		{
+			"name": "Start quest",
+			"id": 30,
+			"description": "Start a quest in the engine quest log.",
+			"defaultParameters": [
+				{
+					"name": "questId",
+					"id": -1,
+					"description": "Quest id, e.g. q-rat-menace, q-dungeon-clear, q-ancient-relic.",
+					"defaultValue": { "k": 8, "v": "q-rat-menace" }
+				}
+			]
+		},
+		{
+			"name": "Complete quest",
+			"id": 31,
+			"description": "Complete a quest (grants its rewards).",
+			"defaultParameters": [
+				{
+					"name": "questId",
+					"id": -1,
+					"description": "Quest id to complete.",
+					"defaultValue": { "k": 8, "v": "q-rat-menace" }
+				}
+			]
+		},
+		{
+			"name": "Quest active?",
+			"id": 32,
+			"description": "Store 1 in a variable if the quest is active, 0 otherwise.",
+			"defaultParameters": [
+				{
+					"name": "questId",
+					"id": -1,
+					"description": "Quest id to check.",
+					"defaultValue": { "k": 8, "v": "q-rat-menace" }
+				},
+				{
+					"name": "variable",
+					"id": -1,
+					"description": "Variable ID to store the result.",
+					"defaultValue": { "k": 12, "v": 1 }
+				}
+			]
+		},
+		{
+			"name": "Quest completed?",
+			"id": 33,
+			"description": "Store 1 in a variable if the quest is completed, 0 otherwise.",
+			"defaultParameters": [
+				{
+					"name": "questId",
+					"id": -1,
+					"description": "Quest id to check.",
+					"defaultValue": { "k": 8, "v": "q-rat-menace" }
+				},
+				{
+					"name": "variable",
+					"id": -1,
+					"description": "Variable ID to store the result.",
+					"defaultValue": { "k": 12, "v": 1 }
+				}
+			]
+		},
+		{
+			"name": "Talk to NPC",
+			"id": 34,
+			"description": "Start a dialog with an NPC (opens the engine dialog tree).",
+			"defaultParameters": [
+				{
+					"name": "npcId",
+					"id": -1,
+					"description": "NPC id, e.g. elder, blacksmith, merchant, hunter.",
+					"defaultValue": { "k": 8, "v": "elder" }
+				}
+			]
+		},
+		{
+			"name": "Choose dialog option",
+			"id": 35,
+			"description": "Pick a dialog option by index (0 = first option).",
+			"defaultParameters": [
+				{
+					"name": "optionIndex",
+					"id": -1,
+					"description": "Index of the dialog option to choose.",
+					"defaultValue": { "k": 12, "v": 0 }
+				}
+			]
+		},
+		{
+			"name": "Close dialog",
+			"id": 36,
+			"description": "Close the current dialog.",
+			"defaultParameters": []
+		},
+		{
+			"name": "Dialog text to variable",
+			"id": 37,
+			"description": "Store the current dialog text into a variable.",
+			"defaultParameters": [
+				{
+					"name": "variable",
+					"id": -1,
+					"description": "Variable ID to store the dialog text.",
+					"defaultValue": { "k": 12, "v": 1 }
+				}
+			]
+		},
+		{
+			"name": "Last message to variable",
+			"id": 38,
+			"description": "Store the last engine message into a variable.",
+			"defaultParameters": [
+				{
+					"name": "variable",
+					"id": -1,
+					"description": "Variable ID to store the message.",
+					"defaultValue": { "k": 12, "v": 1 }
+				}
+			]
+		},
+		{
+			"name": "Run trial",
+			"id": 39,
+			"description": "Run a level-gated trial challenge.",
+			"defaultParameters": [
+				{
+					"name": "trialId",
+					"id": -1,
+					"description": "Trial id: trial-fire, trial-shadow, trial-storm, trial-moon, trial-undead.",
+					"defaultValue": { "k": 8, "v": "trial-fire" }
+				},
+				{
+					"name": "successVar",
+					"id": -1,
+					"description": "Variable ID to store success (1 = cleared).",
+					"defaultValue": { "k": 12, "v": 1 }
+				}
+			]
+		},
+		{
+			"name": "Run raid",
+			"id": 40,
+			"description": "Run a multi-stage raid gauntlet (consumes a raid-whistle).",
+			"defaultParameters": [
+				{
+					"name": "raidId",
+					"id": -1,
+					"description": "Raid id: raid-colossus, raid-warlord, raid-dragon-king, raid-void-tyrant.",
+					"defaultValue": { "k": 8, "v": "raid-colossus" }
+				},
+				{
+					"name": "successVar",
+					"id": -1,
+					"description": "Variable ID to store success (1 = cleared).",
+					"defaultValue": { "k": 12, "v": 1 }
+				}
+			]
+		}
+	],
+	"defaultParameters": [
+		{
+			"name": "Save prefix",
+			"id": -1,
+			"description": "Prefix used to namespace saves in localStorage (change per project).",
+			"defaultValue": { "k": 8, "v": "rpg-engine" }
+		},
+		{
+			"name": "Log to console",
+			"id": -1,
+			"description": "Log engine messages and battles to the browser console.",
+			"defaultValue": { "k": 10, "v": true }
+		}
+	],
+	"description": "Brings the rpg-engine into RPG Paper Maker: a procedural overworld and dungeon generator, turn-based battles, character stats and XP/leveling, inventory and crafting, quest log, NPC dialog trees, the 100-floor Tower of Ascension, trials and raids, Dragon Warrior mode, and save/load. All systems are driven by event commands. The engine state lives in localStorage (namespaced by the Save prefix parameter).",
+	"name": "RPGEngine",
+	"parameters": [
+		{
+			"name": "Save prefix",
+			"id": -1,
+			"description": "Prefix used to namespace saves in localStorage (change per project).",
+			"defaultValue": { "k": 8, "v": "rpg-engine" }
+		},
+		{
+			"name": "Log to console",
+			"id": -1,
+			"description": "Log engine messages and battles to the browser console.",
+			"defaultValue": { "k": 10, "v": true }
+		}
+	],
+	"version": "0.1.0",
+	"website": ""
+}

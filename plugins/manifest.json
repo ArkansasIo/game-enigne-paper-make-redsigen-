@@ -1,6 +1,46 @@
 [
     [
         {
+            "name": "DnD5e",
+            "folders": [
+                {
+                    "name": "data",
+                    "files": [
+                        "armor.json",
+                        "backgrounds.json",
+                        "classes.json",
+                        "equipment.json",
+                        "feats.json",
+                        "monsters.json",
+                        "npcs.json",
+                        "races.json",
+                        "weapons.json"
+                    ]
+                },
+                {
+                    "name": "engine",
+                    "files": [
+                        "Armor.js",
+                        "Combat.js",
+                        "Conditions.js",
+                        "Creature.js",
+                        "Dice.js",
+                        "Leveling.js",
+                        "Rules.js",
+                        "Spells.js",
+                        "SRD.js",
+                        "Weapons.js"
+                    ]
+                },
+                {
+                    "name": "ui"
+                }
+            ],
+            "files": [
+                "details.json"
+            ]
+        },
+        {
             "name": "JollyFlipAnimation",
             "files": [
                 "code.js",
@@ -415,6 +455,21 @@
                 "code.js",
                 "details.json",
                 "LICENSE"
+            ]
+        },
+        {
+            "name": "RPGEngine",
+            "files": [
+                "code.js",
+                "details.json"
+            ],
+            "folders": [
+                {
+                    "name": "engine",
+                    "files": [
+                        "rpg-engine.js"
+                    ]
+                }
             ]
         },
         {
