@@ -10,7 +10,7 @@
 */
 
 .splitter {
-	background-color: var(--main-bg-color);
+	background-color: #0b0d0f;
 
 	.splitterButton {
 		&.vertical {
@@ -23,12 +23,16 @@
 		}
 
 		&.horizontal {
-			width: 4px;
+			width: 5px;
 			border: 1px solid var(--darkest-bg-color);
 
 			&:hover {
 				cursor: col-resize;
 			}
 		}
+	}
+
+	.splitterButton:hover {
+		background-color: var(--accent-gold);
 	}
 }

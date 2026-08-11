@@ -11,9 +11,9 @@
 
 .tree {
 	flex: 1 1 auto;
-	background-color: var(--darkest-containers-bg-color);
-	border: 1px solid var(--lighter-bg-color);
-	border-radius: 2px;
+	background-color: #121416;
+	border: 1px solid var(--panel-border);
+	border-radius: 0;
 	overflow: auto;
 	overflow-x: overlay;
 	overflow-y: auto;
@@ -26,7 +26,9 @@
 		flex-grow: 1;
 		gap: 5px;
 		align-items: center;
-		padding: 1px 5px 1px 5px;
+		padding: 7px 9px;
+		background: #1c2024;
+		border-bottom: 1px solid var(--panel-border);
 		white-space: nowrap;
 	}
 

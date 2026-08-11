@@ -10,6 +10,7 @@
 */
 
 .mapEditorBar {
+	background: #0b0d0f;
 	.menuSub .title {
 		padding: 7px 10px 7px 10px;
 	}
@@ -35,6 +36,9 @@
 	color: white;
 	touch-action: none;
 	min-height: 200px;
+	background-color: #242a2d;
+	background-image: linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+	background-size: 32px 32px;
 
 	&.cursor-translate {
 		cursor:

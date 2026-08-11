@@ -12,10 +12,10 @@
 button {
 	border: none;
 	padding: 3px 10px 3px 10px;
-	border-radius: 3px;
+	border-radius: 2px;
 	background-color: transparent;
 	color: white;
-	border: 1px solid var(--lighter-bg-color);
+	border: 1px solid var(--panel-border);
 	cursor: pointer;
 	display: flex;
 	align-items: center;
@@ -25,7 +25,8 @@ button {
 	height: 20px;
 
 	&:hover:not(.disabled):not(.primary):not(.active):not(.patreon):not(.red) {
-		background-color: rgba(255, 255, 255, 0.08);
+		background-color: var(--hover-main-bg-color);
+		border-color: #59636a;
 	}
 
 	&:has(svg.close:hover) {

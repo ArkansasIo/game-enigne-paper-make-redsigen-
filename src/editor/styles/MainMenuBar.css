@@ -13,7 +13,11 @@
 	display: flex;
 	align-items: center;
 	user-select: none;
-	gap: 5px;
+	gap: 3px;
+	min-height: 34px;
+	padding: 0 8px;
+	border-bottom: 1px solid #08090a;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04);
 	-webkit-user-select: none;
 	-webkit-app-region: drag;
 
@@ -22,21 +26,20 @@
 	}
 
 	.logo {
-		width: 24px;
-		height: 24px;
-		padding-left: 5px;
-		padding-right: 5px;
+		width: 22px;
+		height: 22px;
+		padding: 3px 7px 3px 2px;
 	}
 
 	.hamburger {
-		padding: 5px;
+		padding: 4px 6px;
 		display: flex;
 		cursor: pointer;
 		position: relative;
 
 		svg {
-			width: 32px;
-			height: 32px;
+			width: 22px;
+			height: 22px;
 		}
 	}
 
@@ -56,5 +59,16 @@
 .mainMenuBar,
 .mainMenuBar .menuItem,
 .mainMenuBar .menuSub .title {
-	background-color: var(--main-bg-color);
+	background-color: #17191c;
+}
+
+.mainMenuBar .menuItem,
+.mainMenuBar .menuSub .title {
+	padding: 7px 10px;
+	border-radius: 2px;
+}
+
+.mainMenuBar .menuItem:hover,
+.mainMenuBar .menuSub .title:hover {
+	background-color: var(--hover-main-bg-color);
 }
