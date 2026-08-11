@@ -9,12 +9,13 @@
         http://rpg-paper-maker.com/index.php/eula.
 */
 
-import { EVENT_COMMAND_KIND, ITEM_KIND, ITERATOR, Utils } from '../../common';
+import { EVENT_COMMAND_KIND, ITEM_KIND, ITERATOR, SONG_KIND, Utils } from '../../common';
 import { Localization, MapObjectCommandType } from '../../models';
 import { DynamicValue } from '../DynamicValue';
 import { Project } from '../Project';
 import { GameStateSimulation, OPERATORS_COMPARE, OPERATORS_NUMBERS } from './GameStateSimulation';
 import type { SimulationContext } from './SimulationInterpreter';
+import { playLoopingAudio, playSoundEffect, stopLoopingAudio, stopSoundEffect } from './SimulationAudio';
 
 export type CommandState = Record<string, unknown> | null;
 
@@ -81,6 +82,141 @@ class CommandBase {
 
 class CommandUnsupported extends CommandBase {
 	update(_state: CommandState, _ctx: SimulationContext): number {
+		return 1;
+	}
+}
+
+class CommandStartBattle extends CommandBase {
+	private readonly selection: number;
+	private readonly troopID = new DynamicValue();
+
+	constructor(command: MapObjectCommandType[]) {
+		super();
+		const iterator = Utils.generateIterator();
+		Utils.initializeBoolCommand(command, iterator);
+		Utils.initializeBoolCommand(command, iterator);
+		this.selection = command[iterator.i++] as number;
+		if (this.selection === 0) this.troopID.updateCommand(command, iterator);
+	}
+
+	update(_state: CommandState, ctx: SimulationContext): number {
+		ctx.game.startBattle(this.selection === 0 ? ctx.game.resolveNumber(this.troopID) : 0);
+		return 1;
+	}
+}
+
+class CommandBattleBranch extends CommandBase {
+	constructor(private readonly wins: boolean) {
+		super();
+		this.goToNextCommand = () => (this.wins ? 2 : 1);
+	}
+
+	update(_state: CommandState, ctx: SimulationContext): number {
+		return ctx.game.battleResult === this.wins ? -1 : 1;
+	}
+}
+
+class CommandEndBattle extends CommandBase {
+	update(_state: CommandState, ctx: SimulationContext): number {
+		ctx.game.endBattle();
+		return 1;
+	}
+}
+
+class CommandSceneRequest extends CommandBase {
+	constructor(private readonly scene: 'main-menu' | 'save-menu' | 'title-screen' | 'game-over') {
+		super();
+	}
+
+	update(_state: CommandState, ctx: SimulationContext): number {
+		ctx.game.requestScene(this.scene);
+		return -3;
+	}
+}
+
+class CommandAllowScene extends CommandBase {
+	constructor(private readonly scene: 'saves' | 'main-menu', private readonly allowed: boolean) {
+		super();
+	}
+
+	update(_state: CommandState, ctx: SimulationContext): number {
+		if (this.scene === 'saves') ctx.game.savesAllowed = this.allowed;
+		else ctx.game.mainMenuAllowed = this.allowed;
+		return 1;
+	}
+}
+
+class CommandPlayAudio extends CommandBase {
+	private readonly kind: SONG_KIND;
+	private readonly dynamicSongID = new DynamicValue();
+	private readonly songID: number;
+	private readonly volume = new DynamicValue();
+	private readonly isStart: boolean;
+	private readonly start = new DynamicValue();
+	private readonly isEnd: boolean;
+	private readonly end = new DynamicValue();
+
+	constructor(command: MapObjectCommandType[], kind: SONG_KIND) {
+		super();
+		this.kind = kind;
+		const iterator = Utils.generateIterator();
+		this.dynamicSongID.isActivated = Utils.initializeBoolCommand(command, iterator);
+		this.dynamicSongID.updateCommand(command, iterator);
+		this.songID = command[iterator.i++] as number;
+		this.volume.updateCommand(command, iterator);
+		this.isStart = Utils.initializeBoolCommand(command, iterator);
+		this.start.updateCommand(command, iterator);
+		this.isEnd = Utils.initializeBoolCommand(command, iterator);
+		this.end.updateCommand(command, iterator);
+	}
+
+	initialize(ctx: SimulationContext): CommandState {
+		const songID = this.dynamicSongID.isActivated ? ctx.game.resolveNumber(this.dynamicSongID) : this.songID;
+		const song = Project.current!.songs.getByID(this.kind, songID);
+		if (!song) return { done: true };
+		const state = { done: false };
+		void song
+			.getPathOrBase64()
+			.then(async (src) => {
+				if (!src) return;
+				const { Howl } = await import('howler');
+				const howl = new Howl({ src: [src], html5: true });
+				const volume = ctx.game.resolveNumber(this.volume);
+				const start = this.isStart ? ctx.game.resolveNumber(this.start) : 0;
+				const end = this.isEnd ? ctx.game.resolveNumber(this.end) : 0;
+				if (this.kind === SONG_KIND.SOUND || this.kind === SONG_KIND.MUSIC_EFFECT) {
+					playSoundEffect(songID, howl, volume);
+				} else {
+					playLoopingAudio(this.kind, howl, volume, start, end);
+				}
+			}).finally(() => {
+				state.done = true;
+			});
+		return state;
+	}
+
+	update(state: CommandState): number {
+		return state?.done ? 1 : 0;
+	}
+}
+
+class CommandStopAudio extends CommandBase {
+	private readonly kind: SONG_KIND | null;
+	private readonly time = new DynamicValue();
+	private readonly soundID = new DynamicValue();
+
+	constructor(command: MapObjectCommandType[], kind: SONG_KIND | null) {
+		super();
+		this.kind = kind;
+		const iterator = Utils.generateIterator();
+		this.time.updateCommand(command, iterator);
+		if (kind === null) this.soundID.updateCommand(command, iterator);
+	}
+
+	update(_state: CommandState, ctx: SimulationContext): number {
+		const milliseconds = Math.max(0, ctx.game.resolveNumber(this.time) * 1000);
+		if (this.kind === null) stopSoundEffect(ctx.game.resolveNumber(this.soundID), milliseconds);
+		else stopLoopingAudio(this.kind, milliseconds);
 		return 1;
 	}
 }
@@ -827,11 +963,45 @@ export const createSimulationCommand = (
 			return new CommandModifyCurrency(command);
 		case EVENT_COMMAND_KIND.CALL_A_COMMON_REACTION:
 			return new CommandCallACommonReaction(command);
+		case EVENT_COMMAND_KIND.START_BATTLE:
+			return new CommandStartBattle(command);
+		case EVENT_COMMAND_KIND.IF_WIN:
+			return new CommandBattleBranch(true);
+		case EVENT_COMMAND_KIND.IF_LOSE:
+			return new CommandBattleBranch(false);
+		case EVENT_COMMAND_KIND.END_BATTLE:
+			return new CommandEndBattle();
+		case EVENT_COMMAND_KIND.OPEN_MAIN_MENU:
+			return new CommandSceneRequest('main-menu');
+		case EVENT_COMMAND_KIND.OPEN_SAVES_MENU:
+			return new CommandSceneRequest('save-menu');
+		case EVENT_COMMAND_KIND.TITLE_SCREEN:
+			return new CommandSceneRequest('title-screen');
+		case EVENT_COMMAND_KIND.GAME_OVER:
+			return new CommandSceneRequest('game-over');
+		case EVENT_COMMAND_KIND.ALLOW_FORBID_SAVES:
+			return new CommandAllowScene('saves', Utils.numToBool(command[0] as number));
+		case EVENT_COMMAND_KIND.ALLOW_FORBID_MAIN_MENU:
+			return new CommandAllowScene('main-menu', Utils.numToBool(command[0] as number));
+		case EVENT_COMMAND_KIND.PLAY_MUSIC:
+		case EVENT_COMMAND_KIND.CHANGE_BATTLE_MUSIC:
+		case EVENT_COMMAND_KIND.CHANGE_VICTORY_MUSIC:
+			return new CommandPlayAudio(command, SONG_KIND.MUSIC);
+		case EVENT_COMMAND_KIND.PLAY_BACKGROUND_SOUND:
+			return new CommandPlayAudio(command, SONG_KIND.BACKGROUND_SOUND);
+		case EVENT_COMMAND_KIND.PLAY_SOUND:
+			return new CommandPlayAudio(command, SONG_KIND.SOUND);
+		case EVENT_COMMAND_KIND.PLAY_MUSIC_EFFECT:
+			return new CommandPlayAudio(command, SONG_KIND.MUSIC_EFFECT);
+		case EVENT_COMMAND_KIND.STOP_MUSIC:
+			return new CommandStopAudio(command, SONG_KIND.MUSIC);
+		case EVENT_COMMAND_KIND.STOP_BACKGROUND_SOUND:
+			return new CommandStopAudio(command, SONG_KIND.BACKGROUND_SOUND);
+		case EVENT_COMMAND_KIND.STOP_A_SOUND:
+			return new CommandStopAudio(command, null);
 		case EVENT_COMMAND_KIND.END_WHILE:
 		case EVENT_COMMAND_KIND.END_IF:
 		case EVENT_COMMAND_KIND.END_CHOICE:
-		case EVENT_COMMAND_KIND.IF_WIN:
-		case EVENT_COMMAND_KIND.IF_LOSE:
 			return null;
 		default:
 			return new CommandUnsupported();
@@ -840,7 +1010,9 @@ export const createSimulationCommand = (
 
 export {
 	CommandBase,
+	CommandBattleBranch,
 	CommandCallACommonReaction,
+	CommandAllowScene,
 	CommandChangeVariables,
 	CommandChoice,
 	CommandDisplayChoice,
@@ -853,6 +1025,8 @@ export {
 	CommandModifyTeam,
 	CommandSetDialogBoxOptions,
 	CommandShowText,
+	CommandSceneRequest,
+	CommandStartBattle,
 	CommandStopReaction,
 	CommandUnsupported,
 	CommandWait,

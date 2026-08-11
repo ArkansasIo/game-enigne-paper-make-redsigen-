@@ -27,6 +27,8 @@ export type SimulationHero = {
 	name: string;
 };
 
+export type SimulationSceneRequest = 'main-menu' | 'save-menu' | 'title-screen' | 'game-over';
+
 export const OPERATORS_COMPARE: ReadonlyArray<(a: number, b: number) => boolean> = [
 	(a, b) => a === b,
 	(a, b) => a !== b,
@@ -55,6 +57,10 @@ class GameStateSimulation {
 	public teamHeroes: SimulationHero[] = [];
 	public reserveHeroes: SimulationHero[] = [];
 	public hiddenHeroes: SimulationHero[] = [];
+	public battleResult: boolean | null = null;
+	public sceneRequest: SimulationSceneRequest | null = null;
+	public savesAllowed = true;
+	public mainMenuAllowed = true;
 
 	private nextInstanceID = 1;
 
@@ -204,6 +210,23 @@ class GameStateSimulation {
 	resolveString(value: DynamicValue): string {
 		const resolved = this.resolveValue(value);
 		return resolved === null || resolved === undefined ? '' : String(resolved);
+	}
+
+	startBattle(troopID: number): void {
+		const troop = Project.current!.troops.getByID(troopID);
+		const heroPower = this.teamHeroes.reduce((sum, hero) => sum + Math.max(1, hero.level), 0);
+		const enemyPower = troop?.list
+			.filter((enemy) => !this.resolveNumber(enemy.hidden))
+			.reduce((sum, enemy) => sum + Math.max(1, this.resolveNumber(enemy.level)), 0) ?? 0;
+		this.battleResult = troop !== undefined && heroPower > 0 && heroPower >= enemyPower;
+	}
+
+	endBattle(): void {
+		this.battleResult = null;
+	}
+
+	requestScene(scene: SimulationSceneRequest): void {
+		this.sceneRequest = scene;
 	}
 }
 
