@@ -960,6 +960,8 @@
 	"author": "Author",
 	"website": "Website",
 	"tutorial": "Tutorial",
+	"dragon.warrior": "Dragon Warrior",
+	"dragon.warrior.tooltip": "Full Dragon Warrior template with the Alefgard campaign and RPGEngine integration.",
 	"blank.tooltip": "Project without any data in it.",
 	"default.tooltip": "Project with some basic data that are very helpful to learn how to use.",
 	"tutorial.tooltip": "Tutorial project for learning purpose and see how to use different type of object commands.",

@@ -53,6 +53,7 @@ enum PROJECT_TYPE {
 	BLANK,
 	DEFAULT,
 	TUTORIAL,
+	DRAGON_WARRIOR,
 }
 
 type DLCProject = {
@@ -170,6 +171,8 @@ function DialogNewProject({ setIsOpen, onAccept }: Props) {
 			await copyFolder(selectedDLCProject.path, project.getPath());
 		} else if (projectType === PROJECT_TYPE.TUTORIAL) {
 			await copyPublicFolder([Paths.TUTORIAL], project.getPath());
+		} else if (projectType === PROJECT_TYPE.DRAGON_WARRIOR) {
+			await copyPublicFolder([Paths.DRAGON_WARRIOR], project.getPath());
 		} else {
 			for (const file of Paths.ALL_JSON) {
 				await copyPublicFile(Paths.join(Paths.DEFAULT, file), Paths.join(project.getPath(), file));
@@ -219,7 +222,7 @@ function DialogNewProject({ setIsOpen, onAccept }: Props) {
 			project.systems.PATH_BR = Paths.join(Paths.DIST, Paths.BR);
 			project.systems.PATH_DLCS = Paths.join(window.env.appPath, Paths.DLCS);
 		}
-		if (projectType !== PROJECT_TYPE.TUTORIAL && !selectedDLCProject) {
+		if (projectType !== PROJECT_TYPE.TUTORIAL && projectType !== PROJECT_TYPE.DRAGON_WARRIOR && !selectedDLCProject) {
 			await Model.Map.createDefaultMap(1, t('starting.map'));
 			await Model.Map.createDefaultMap(2, t('default'));
 			project.translateDefaults();
@@ -434,6 +437,14 @@ function DialogNewProject({ setIsOpen, onAccept }: Props) {
 									onClick={() => handleSelectProjectType(PROJECT_TYPE.TUTORIAL)}
 								>
 									{t('tutorial')}
+								</Button>
+							</Tooltip>
+							<Tooltip text={t('dragon.warrior.tooltip')}>
+								<Button
+									active={projectType === PROJECT_TYPE.DRAGON_WARRIOR && !selectedDLCProject}
+									onClick={() => handleSelectProjectType(PROJECT_TYPE.DRAGON_WARRIOR)}
+								>
+									{t('dragon.warrior')}
 								</Button>
 							</Tooltip>
 							<Tooltip text='DLC'>

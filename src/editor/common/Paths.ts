@@ -66,6 +66,7 @@ class Paths {
 	public static readonly TEST = 'Test';
 	public static readonly DEFAULT = 'Default';
 	public static readonly TUTORIAL = 'Tutorial';
+	public static readonly DRAGON_WARRIOR = 'DragonWarrior';
 	public static readonly DEPLOY = 'Deploy';
 	public static readonly BUILD = 'build';
 	public static readonly TEMP = 'temp';

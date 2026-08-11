@@ -13,7 +13,6 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineFileAdd, AiOutlineFolderOpen } from 'react-icons/ai';
 import { BiImport } from 'react-icons/bi';
-import { FaHandsHelping } from 'react-icons/fa';
 import { MdOutlineAddchart } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
 import { BUTTON_TYPE, Constants } from '../../common';
@@ -102,10 +101,6 @@ function PanelNoProject() {
 		await openWebsite('https://rpg-paper-maker.com/shop/');
 	};
 
-	const handleContribute = async () => {
-		await openWebsite('https://rpg-paper-maker.com/contribute/');
-	};
-
 	const renderProjectsList = () => {
 		return projects.length === 0 ? (
 			<div className='textSmallDetail'>{`${t('no.recent.projects.opened')}.`}</div>
@@ -158,10 +153,6 @@ function PanelNoProject() {
 					<Button big onClick={handleDLCs}>
 						<MdOutlineAddchart />
 						{t('dlcs')}
-					</Button>
-					<Button buttonType={BUTTON_TYPE.PATREON} big onClick={handleContribute}>
-						<FaHandsHelping />
-						{t('contribute')}
 					</Button>
 					<a
 						href=''
